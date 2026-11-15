@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XB5N3sMaMJfIz9Ex5MaDLQy69NCe3BSt/6IPDNlVdYY=' 'sha256-VQKm8bhpU10+04xEWwYfiTtbEUTtT+IE1RXB6wmVT/o=' https://cdn.jsdelivr.net/npm/three@0.160.0/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Real Cafetería · Mota del Cuervo</title>
+<meta name="description" content="El Real Cafetería en Mota del Cuervo (Cuenca): desayunos, tapas, burgers y comida vegana. Tel. 604 40 70 26.">
+<meta name="theme-color" content="#0b0907">
+<link rel="icon" href="img/corona.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Caslon+Display&display=swap">
+<style>
+:root{--bg:#0b0907;--cream:#f3ead6;--gold:#d4a21b;--mustard:#e8b53c;--brown:#2b1d12}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(120% 80% at 50% 38%,#1a130c 0%,#0b0907 55%,#060504 100%)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* grano */
+body::after{content:"";position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+.nav{position:fixed;z-index:5;left:23.3vw;right:23.4vw;top:4.6vh;height:4.4vh;display:flex;align-items:center;font:500 max(11px,.78vw)/1 Inter,sans-serif;opacity:0}
+.logo{display:flex;align-items:center;gap:.7vw;margin-right:6vw;white-space:nowrap}
+.logo img{width:2.4vw;min-width:26px;height:auto;display:block}
+.logo b{display:block;font:400 max(17px,1.55vw)/1 "Libre Caslon Display",serif;letter-spacing:-.01em}
+.logo small{display:block;font:400 max(8px,.6vw)/1.3 Inter,sans-serif;opacity:.7;letter-spacing:.04em;margin-top:.15vw}
+.links{display:flex;gap:2.3vw}
+.links a,.links button{opacity:.88;transition:opacity .2s,color .2s;white-space:nowrap}
+.links a:hover,.links button:hover,.links button[aria-expanded=true]{opacity:1;color:var(--mustard)}
+.links svg{width:.62em;height:.62em;margin-left:.3em;vertical-align:.08em;opacity:.8}
+.right{margin-left:auto;display:flex;align-items:center;gap:2.4vw}
+.rating{opacity:.88;white-space:nowrap}
+.rating i{font-style:normal;color:var(--mustard)}
+.pill{display:inline-flex;align-items:center;gap:.45vw;background:var(--mustard);color:#16110a;border-radius:.4vw;padding:.55vw 1vw;transition:transform .2s,background .2s;white-space:nowrap}
+.pill:hover{transform:translateY(-1px);background:#f2c24f}
+.pill svg{width:1em;height:1em}
+
+/* POPOVERS */
+.pop{position:fixed;z-index:6;top:calc(4.6vh + 4.4vh + 1.2vh);width:min(360px,90vw);padding:22px 24px;border-radius:14px;background:rgba(20,15,10,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(243,234,214,.12);box-shadow:0 30px 60px rgba(0,0,0,.5);font-size:14px;line-height:1.5;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.pop.open{opacity:1;transform:none;pointer-events:auto}
+.pop h3{font:400 28px/1 "Libre Caslon Display",serif;margin-bottom:12px;color:var(--cream)}
+.pop dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+.pop dt{opacity:.6}
+.pop p.note{margin-top:12px;opacity:.6;font-size:12.5px}
+.pop blockquote{margin:12px 0 0;padding-left:12px;border-left:2px solid var(--mustard);font-size:13.5px;opacity:.9}
+.pop .stars{color:var(--mustard);letter-spacing:2px}
+.pop a.more{display:inline-block;margin-top:14px;color:var(--mustard);font-weight:500}
+
+/* WORDMARK */
+.mark{position:fixed;z-index:1;left:0;right:0;--fs:min(46vh,32vw);top:calc(46.5vh - var(--fs)*.8);text-align:center;font:400 var(--fs)/1 "Libre Caslon Display",serif;letter-spacing:-.02em;color:var(--cream);opacity:0;white-space:nowrap;pointer-events:none}
+.mark span{color:var(--mustard)}
+.cats{position:fixed;z-index:1;top:51.1vh;left:0;right:0;display:flex;justify-content:center;flex-wrap:wrap;gap:.6vh 2.1vw;font:500 max(10px,.74vw)/1.4 Inter,sans-serif;opacity:0}
+.cats button{opacity:.82;transition:opacity .2s,color .2s;position:relative}
+.cats button:hover,.cats button:focus-visible,.cats button.on{opacity:1;color:var(--mustard)}
+
+canvas#c{position:fixed;inset:0;z-index:2;width:100%;height:100%;display:block;pointer-events:none}
+
+.addr{display:none;position:fixed;z-index:5;font:400 11px/1.5 Inter,sans-serif;opacity:0}
+.addr a{opacity:.7;transition:opacity .2s}
+.addr a:hover{opacity:1}
+
+:focus-visible{outline:2px solid var(--mustard);outline-offset:3px;border-radius:4px}
+
+@media (max-width:760px){
+  .nav{left:5vw;right:5vw;top:2.5vh;height:auto}
+  .links,.rating{display:none}
+  .logo{margin-right:0;gap:8px}
+  .logo img{width:30px}
+  .pill{padding:9px 14px;border-radius:7px;gap:6px}
+  .mark{--fs:36vw;top:14vh}
+  .cats{top:36vh;padding:0 8vw;gap:6px 16px;font-size:12px}
+  .addr{display:block;left:5vw;right:5vw;bottom:2.4vh}
+  .pop{left:5vw!important}
+}
+@media (prefers-reduced-motion:reduce){.pop{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Principal">
+  <a class="logo" href="#" aria-label="El Real Cafetería, inicio">
+    <img src="img/corona.png" alt="" width="781" height="651">
+    <span><b>El Real</b><small>cafetería · Mota del Cuervo</small></span>
+  </a>
+  <div class="links">
+    <a href="https://elrealcafe.my.canva.site/" target="_blank" rel="noopener noreferrer">Carta<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7l4-4M4 3h3v3"/></svg></a>
+    <button type="button" data-pop="horario" aria-expanded="false" aria-controls="horario">Horario<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4l3 3 3-3"/></svg></button>
+    <button type="button" data-pop="resenas" aria-expanded="false" aria-controls="resenas">Reseñas<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4l3 3 3-3"/></svg></button>
+    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5031296,-2.8688082" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+  </div>
+  <div class="right">
+    <a class="pill" href="tel:+34604407026"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  </div>
+</nav>
+
+<div class="pop" id="horario" role="dialog" aria-label="Horario">
+  <h3>Horario</h3>
+  <dl>
+    <dt>Lun · Mié a Vie</dt><dd>9:00 – 13:30 y 17:30 – cierre</dd>
+    <dt>Sáb y Dom</dt><dd>9:00 – 15:00 y 17:30 – cierre</dd>
+    <dt>Martes</dt><dd>Cerrado</dd>
+  </dl>
+  <p class="note" style="opacity:.85">C. Camino Real Alto, 11 · 16630 Mota del Cuervo, Cuenca</p>
+  <p class="note">Comer allí y a domicilio · 10–20 € por persona</p>
+</div>
+<div class="pop" id="resenas" role="dialog" aria-label="Reseñas">
+  <h3><span class="stars">★★★★☆</span> 4,4</h3>
+  <p>233 reseñas en Google</p>
+  <blockquote>«Buenísima la hamburguesa de vacuno, las tostas y el bocadillo.»</blockquote>
+  <blockquote>«Siempre que voy a Mota tomo una cerveza, muy buen trato.»</blockquote>
+  <blockquote>«Los 2 camareros que nos atendieron fueron muy majos y amables.»</blockquote>
+  <a class="more" href="https://www.google.com/maps?cid=10396957666449547056" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
+</div>
+
+<h1 class="mark" aria-label="El Real Cafetería">El Real</h1>
+
+<div class="cats" role="group" aria-label="Carta">
+  <button type="button" data-cat="novedades">Novedades</button>
+  <button type="button" data-cat="cafes">Cafés</button>
+  <button type="button" data-cat="desayunos">Desayunos</button>
+  <button type="button" data-cat="postres">Crepes y gofres</button>
+  <button type="button" data-cat="batidos">Batidos</button>
+  <button type="button" data-cat="veganas">Opciones veganas</button>
+  <button type="button" data-cat="burgers">Burgers</button>
+  <button type="button" data-cat="sandwich">Sándwich</button>
+  <button type="button" data-cat="bocadillos">Bocadillos y perritos</button>
+  <button type="button" data-cat="tostas">Tostas</button>
+  <button type="button" data-cat="picar">Para picar</button>
+</div>
+
+<p class="addr"><a href="https://www.google.com/maps?cid=10396957666449547056" target="_blank" rel="noopener noreferrer">C. Camino Real Alto, 11 · 16630 Mota del Cuervo, Cuenca</a><br><a href="tel:+34604407026">604 40 70 26</a> · <a href="https://www.instagram.com/elreal_cafe/" target="_blank" rel="noopener noreferrer">@elreal_cafe</a></p>
+
+<canvas id="c" aria-hidden="true"></canvas>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) { document.documentElement.style.display = 'none'; } }
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = 'cubic-bezier(.2,.8,.2,1)';
+const $ = s => document.querySelector(s);
+// Entradas de texto (funciona aunque falle WebGL)
+const intro = () => {
+  if (reduce) { ['.mark','.nav','.cats','.addr'].forEach(s => $(s).style.opacity = 1); return; }
+  $('.mark').animate([{opacity:0,transform:'translateY(4vh)',filter:'blur(14px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1400,delay:150,easing:ease,fill:'forwards'});
+  $('.nav').animate([{opacity:0,transform:'translateY(-1.2vh)'},{opacity:1,transform:'none'}],{duration:900,delay:700,easing:ease,fill:'forwards'});
+  $('.cats').animate([{opacity:0,transform:'translateY(1.2vh)'},{opacity:1,transform:'none'}],{duration:900,delay:850,easing:ease,fill:'forwards'});
+  $('.addr').animate([{opacity:0},{opacity:1}],{duration:900,delay:1100,easing:ease,fill:'forwards'});
+};
+
+// Ventanas de Horario y Reseñas
+const pops = [...document.querySelectorAll('[data-pop]')];
+const closePops = () => pops.forEach(b => { b.setAttribute('aria-expanded','false'); $('#'+b.dataset.pop).classList.remove('open'); });
+pops.forEach(b => b.addEventListener('click', e => {
+  e.stopPropagation();
+  const p = $('#'+b.dataset.pop), open = !p.classList.contains('open');
+  closePops();
+  if (open) { const r = b.getBoundingClientRect(); p.style.left = Math.max(12, Math.min(r.left - 24, innerWidth - p.offsetWidth - 12)) + 'px'; p.classList.add('open'); b.setAttribute('aria-expanded','true'); }
+}));
+document.addEventListener('click', e => { if (!e.target.closest('.pop')) closePops(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closePops(); });
+
+// ---------- Carta: piezas de la fila (datos reales de su carta) ----------
+const C = {cream:'#efe4cc', mustard:'#e8b53c', gold:'#c9971a', brown:'#2e2016', green:'#0f6e45', black:'#121010', red:'#b8332a'};
+const P = (img, name, price, cat, band) => ({type:'photo', img:'img/'+img+'.jpg', name, price, cat, band});
+const T = (title, rows, cat, bg, fg, accent) => ({type:'text', title, rows, cat, bg, fg, accent});
+const PIECES = [
+  P('pechugona','La Pechugona','12,50 €','burgers',C.red),
+  T('Cafés',[['Solo','1,40'],['Con leche','1,60'],['Cortado','1,50'],['Bombón','1,90'],['Capuccino / Latte','1,90'],['Té especial','1,70'],['Té matcha especial','4,00']],'cafes',C.brown,C.cream,C.mustard),
+  P('tosta-salmon','Tosta de salmón y huevo poché','8,00 €','novedades',C.mustard),
+  P('gofres','Gofres','5,00 €','postres',C.cream),
+  T('Burgers',[['Pollo crispy','8,00'],['Pollo crispy especial','9,50'],['Buey 100%','12,00'],['La Texas','12,50'],['La Pechugona','12,50'],['La Carnívora','13,00']],'burgers',C.cream,C.brown,C.red),
+  P('batido-bomba','Batido bomba','7,00 €','batidos',C.brown),
+  P('tostas-frias','Tostas frías','8,00 €','tostas',C.gold),
+  T('Desayunos',[['Café y tostada','3,30'],['Café y tostada de jamón','4,00'],['Café y croissant plancha','3,70'],['Café y croissant mixto','4,00']],'desayunos',C.black,C.mustard,C.mustard),
+  P('crepes','Crepes','5,00 €','postres',C.mustard),
+  P('vegana','Opciones veganas','desde 7,50 €','veganas',C.green),
+  P('postres-1','Postres caseros','5,00 €','postres',C.brown),
+  T('Sándwich',[['Mixto','5,00'],['Vegetal','5,50'],['El Real','7,50']],'sandwich',C.mustard,C.brown,C.brown),
+  P('tosta-pavo','Tosta de pavo y rúcula','7,50 €','novedades',C.green),
+  P('para-picar','Para picar','','picar',C.cream),
+  P('batido-natural','Batido natural','5,50 €','batidos',C.mustard),
+  T('Bocadillos',[['Realito','9,00'],['Chivito','9,00'],['Perritos','6,00']],'bocadillos',C.green,C.cream,C.mustard),
+  P('tortitas','Tortitas','5,00 €','postres',C.gold),
+  P('tostas-calientes','Tostas calientes','8,50 €','tostas',C.brown),
+  T('Tostadas',[['Jamón y aguacate','4,50'],['Aguacate','3,50'],['Aguacate y queso','4,00'],['Aguacate y huevo','4,50']],'desayunos',C.cream,C.green,C.green),
+  P('postres-2','Postres caseros','5,00 €','postres',C.black),
+];
+const N = PIECES.length;
+
+const loadImg = src => new Promise(r => { const i = new Image(); i.decoding = 'async'; i.onload = () => r(i); i.onerror = () => r(null); i.src = src; });
+const fontsReady = Promise.race([Promise.all([document.fonts.load('400 60px "Libre Caslon Display"'), document.fonts.load('500 30px Inter'), document.fonts.load('400 30px Inter')]), new Promise(r => setTimeout(r, 2500))]);
+
+// Tira de cuadros (como la carta de Canva)
+function checker(g, y, w, h, a, b) { const s = h; for (let x = 0, k = 0; x < w; x += s, k++) { g.fillStyle = k % 2 ? a : b; g.fillRect(x, y, s, s / 2); g.fillStyle = k % 2 ? b : a; g.fillRect(x, y + s / 2, s, s / 2); } }
+function wrap(g, text, maxW) { const words = text.split(' '), lines = []; let l = ''; for (const w of words) { const t = l ? l + ' ' + w : w; if (g.measureText(t).width > maxW && l) { lines.push(l); l = w; } else l = t; } lines.push(l); return lines; }
+const lum = hex => { const n = parseInt(hex.slice(1), 16); return ((n >> 16) * .299 + ((n >> 8) & 255) * .587 + (n & 255) * .114) / 255; };
+
+function drawCover(p, img, crown) {
+  const W = 600, H = 800, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
+  if (p.type === 'photo') {
+    const ph = 610;
+    g.fillStyle = p.band; g.fillRect(0, 0, W, H);
+    if (img) { const s = Math.max(W / img.width, ph / img.height), w = img.width * s, h = img.height * s; g.drawImage(img, (W - w) / 2, (ph - h) / 2, w, h); }
+    checker(g, ph, W, 20, '#111', C.mustard);
+    const fg = lum(p.band) > .55 ? C.brown : C.cream;
+    g.fillStyle = fg; g.textBaseline = 'alphabetic';
+    g.font = '400 50px "Libre Caslon Display", serif';
+    let lines = wrap(g, p.name, W - 150);
+    if (lines.length > 1) { g.font = '400 40px "Libre Caslon Display", serif'; lines = wrap(g, p.name, W - 150).slice(0, 2); }
+    const ys = lines.length > 1 ? [680, 722] : [712];
+    lines.forEach((l, i) => g.fillText(l, 40, ys[i]));
+    if (p.price) { g.font = '500 26px Inter, sans-serif'; g.globalAlpha = .85; g.fillText(p.price, 40, lines.length > 1 ? 768 : 762); g.globalAlpha = 1; }
+    if (crown) { g.globalAlpha = .9; g.drawImage(crown, W - 92, 724, 54, 45); g.globalAlpha = 1; }
+  } else {
+    g.fillStyle = p.bg; g.fillRect(0, 0, W, H);
+    checker(g, 0, W, 26, '#111', C.mustard);
+    if (crown) g.drawImage(crown, 40, 70, 74, 62);
+    g.fillStyle = p.fg; g.font = '400 92px "Libre Caslon Display", serif'; g.fillText(p.title, 38, 236);
+    g.fillStyle = p.accent; g.fillRect(40, 262, 70, 4);
+    const rowH = Math.min(70, 470 / p.rows.length); let y = 330;
+    for (const [n, pr] of p.rows) {
+      g.fillStyle = p.fg; g.font = '500 28px Inter, sans-serif'; g.fillText(n, 40, y);
+      const nw = g.measureText(n).width; g.font = '500 28px Inter, sans-serif'; const pw = g.measureText(pr + ' €').width;
+      g.fillText(pr + ' €', W - 40 - pw, y);
+      g.globalAlpha = .35; g.font = '400 24px Inter, sans-serif'; let d = ''; while (g.measureText(d + '.').width < W - 100 - nw - pw - 24) d += '.'; g.fillText(d, 40 + nw + 12, y); g.globalAlpha = 1;
+      y += rowH;
+    }
+    g.globalAlpha = .55; g.fillStyle = p.fg; g.font = '400 20px Inter, sans-serif'; g.fillText('EL REAL · MOTA DEL CUERVO', 40, H - 34); g.globalAlpha = 1;
+  }
+  return cv;
+}
+
+intro();
+
+let THREE, RoomEnvironment;
+try {
+  THREE = await import('three');
+  ({ RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js'));
+} catch (e) { THREE = null; }
+
+if (THREE) {
+  const canvas = $('#c');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true}); } catch (e) { renderer = null; }
+  if (renderer) {
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    const scene = new THREE.Scene();
+    const pm = new THREE.PMREMGenerator(renderer);
+    scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture; scene.environmentIntensity = .55;
+    const key = new THREE.DirectionalLight(0xfff0dc, 2.4); key.position.set(-4, 6, 6); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xbfd2ff, 1.1); rim.position.set(6, 3, -4); scene.add(rim);
+    scene.add(new THREE.AmbientLight(0xffffff, .12));
+    const cam = new THREE.PerspectiveCamera(19.5, 1, .1, 100);
+    cam.position.set(3.6, 2.15, 7.4);
+    const look = new THREE.Vector3(-1.4, .05, -.6);
+
+    const geo = new THREE.BoxGeometry(.86, 1.1467, .04);
+    const maxAniso = renderer.capabilities.getMaxAnisotropy();
+    const [crown, imgs] = await Promise.all([loadImg('img/corona.png'), Promise.all(PIECES.map(p => p.img ? loadImg(p.img) : null)), fontsReady]);
+    const books = PIECES.map((p, i) => {
+      const tex = new THREE.CanvasTexture(drawCover(p, imgs[i], crown));
+      tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
+      const edgeCol = new THREE.Color(p.type === 'photo' ? p.band : p.bg).multiplyScalar(.62);
+      const edge = new THREE.MeshPhysicalMaterial({color:edgeCol, roughness:.55, clearcoat:.3});
+      const back = new THREE.MeshStandardMaterial({color:edgeCol, roughness:.6});
+      const cover = new THREE.MeshPhysicalMaterial({map:tex, roughness:.42, clearcoat:.55, clearcoatRoughness:.35});
+      const mesh = new THREE.Mesh(geo, [edge, edge, edge, edge, cover, back]);
+      const grp = new THREE.Group();
+      grp.position.set(1.55 + i * -.56, -1.3, .9 + i * -.2); grp.rotation.y = .32;
+      grp.add(mesh); scene.add(grp);
+      mesh.position.y = reduce ? 0 : -3;
+      return {mesh, cat:p.cat, y:mesh.position.y, vy:0, z:0, vz:0, sx:0, sy:0};
+    });
+
+    // Puntero
+    const ptr = {x:-1e4, y:-1e4, in:false, t:-1e9};
+    const coarse = matchMedia('(pointer: coarse)').matches;
+    addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; ptr.x = e.clientX; ptr.y = e.clientY; ptr.in = true; ptr.t = performance.now(); });
+    document.addEventListener('pointerleave', () => ptr.in = false);
+    addEventListener('blur', () => ptr.in = false);
+    let activeCat = null;
+    document.querySelectorAll('[data-cat]').forEach(b => {
+      const on = () => { activeCat = b.dataset.cat; document.querySelectorAll('[data-cat]').forEach(x => x.classList.toggle('on', x === b)); };
+      const off = () => { if (activeCat === b.dataset.cat) activeCat = null; b.classList.remove('on'); };
+      b.addEventListener('mouseenter', on); b.addEventListener('focus', on);
+      b.addEventListener('mouseleave', off); b.addEventListener('blur', off);
+      b.addEventListener('click', () => { on(); if (coarse) { clearTimeout(b._t); b._t = setTimeout(off, 2600); } });
+    });
+
+    let mobile = false;
+    function resize() {
+      const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
+      cam.aspect = w / h; cam.fov = w < h ? 40 : 19.5; mobile = w <= 760;
+      cam.updateProjectionMatrix(); cam.lookAt(look);
+    }
+    addEventListener('resize', resize); resize();
+
+    const v = new THREE.Vector3(), K = 70, Cd = 12.5;
+    const t0 = performance.now(); let last = t0;
+    function frame(now) {
+      const dt = Math.min(.05, (now - last) / 1000); last = now;
+      const t = (now - t0) / 1000;
+      const w = innerWidth, h = innerHeight, s = Math.max(w, h) * .085;
+      books.forEach(b => { v.set(0, .1, 0); b.mesh.localToWorld(v); v.project(cam); b.sx = (v.x + 1) / 2 * w; b.sy = (1 - v.y) / 2 * h; });
+      // cursor virtual en móvil o tras 4 s quieto
+      let px = ptr.x, py = ptr.y, live = ptr.in && document.hasFocus();
+      if (!reduce && (coarse || now - ptr.t > 4000)) {
+        const u = (Math.sin(t * .45) + 1) / 2, a = books[N - 2], c = books[1];
+        px = a.sx + (c.sx - a.sx) * u; py = a.sy + (c.sy - a.sy) * u; live = true;
+      }
+      const catIdx = activeCat ? books.map((b, i) => b.cat === activeCat ? i : -1).filter(i => i >= 0) : null;
+      books.forEach((b, i) => {
+        let inf = 0;
+        if (catIdx) inf = Math.max(...catIdx.map(j => Math.exp(-((i - j) ** 2) / .9)));
+        else if (live) inf = Math.exp(-(((b.sx - px) ** 2) + ((b.sy - py) * .55) ** 2) / (s * s));
+        let ty = .78 * inf;
+        if (!reduce && t < .25 + (N - i) * .035 * (32 / N)) ty = -3;
+        const tz = ty > 0 ? ty * .35 : 0;
+        const hh = dt / 4;
+        for (let k = 0; k < 4; k++) {
+          b.vy += ((ty - b.y) * K - b.vy * Cd) * hh; b.y += b.vy * hh;
+          b.vz += ((tz - b.z) * K - b.vz * Cd) * hh; b.z += b.vz * hh;
+        }
+        b.mesh.position.y = b.y; b.mesh.position.z = b.z; b.mesh.rotation.x = -b.vy * .012;
+      });
+      renderer.render(scene, cam);
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+}
+</script>
+</body>
+</html>
