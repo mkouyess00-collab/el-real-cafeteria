@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XB5N3sMaMJfIz9Ex5MaDLQy69NCe3BSt/6IPDNlVdYY=' 'sha256-VQKm8bhpU10+04xEWwYfiTtbEUTtT+IE1RXB6wmVT/o=' https://cdn.jsdelivr.net/npm/three@0.160.0/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XB5N3sMaMJfIz9Ex5MaDLQy69NCe3BSt/6IPDNlVdYY=' 'sha256-OKupSqWTzHXh8u007sOM3iwkOcTCUSgGP72bGs3URKk=' https://cdn.jsdelivr.net/npm/three@0.160.0/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>El Real Cafetería · Mota del Cuervo</title>
@@ -173,7 +173,7 @@ const P = (img, name, price, cat, band) => ({type:'photo', img:'img/'+img+'.jpg'
 const T = (title, rows, cat, bg, fg, accent) => ({type:'text', title, rows, cat, bg, fg, accent});
 const PIECES = [
   P('pechugona','La Pechugona','12,50 €','burgers',C.red),
-  T('Cafés',[['Solo','1,40'],['Con leche','1,60'],['Cortado','1,50'],['Bombón','1,90'],['Capuccino / Latte','1,90'],['Té especial','1,70'],['Té matcha especial','4,00']],'cafes',C.brown,C.cream,C.mustard),
+  T('Cafés',[['Solo','1,40'],['Con leche','1,60'],['Cortado','1,50'],['Bombón','1,70'],['Capuccino / Latte','1,90'],['Té especial','1,90'],['Té matcha especial','4,00']],'cafes',C.brown,C.cream,C.mustard),
   P('tosta-salmon','Tosta de salmón y huevo poché','8,00 €','novedades',C.mustard),
   P('gofres','Gofres','5,00 €','postres',C.cream),
   T('Burgers',[['Pollo crispy','8,00'],['Pollo crispy especial','9,50'],['Buey 100%','12,00'],['La Texas','12,50'],['La Pechugona','12,50'],['La Carnívora','13,00']],'burgers',C.cream,C.brown,C.red),
