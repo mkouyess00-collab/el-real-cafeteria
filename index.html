@@ -2,343 +2,731 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-XB5N3sMaMJfIz9Ex5MaDLQy69NCe3BSt/6IPDNlVdYY=' 'sha256-OKupSqWTzHXh8u007sOM3iwkOcTCUSgGP72bGs3URKk=' https://cdn.jsdelivr.net/npm/three@0.160.0/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'; object-src 'none'; frame-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Du+OJKJSbdUgz5nrHeWWINvez6XKDDU/tyj/5c2uvwo=' 'sha256-a69yZajCIuEdPtypAvFVK8dHchv2dRtwrxX7Dii3n4Q=' https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ https://cdn.jsdelivr.net/npm/lenis@1.1.13/; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://maps.google.com https://www.google.com; connect-src 'none'; manifest-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>El Real Cafetería · Mota del Cuervo</title>
-<meta name="description" content="El Real Cafetería en Mota del Cuervo (Cuenca): desayunos, tapas, burgers y comida vegana. Tel. 604 40 70 26.">
-<meta name="theme-color" content="#0b0907">
+<title>El Real Cafetería · Coffee &amp; Kitchen · Mota del Cuervo</title>
+<meta name="description" content="El Real Cafetería en Mota del Cuervo (Cuenca): desayunos, tostas, burgers, comida vegana, crepes, gofres y batidos. C. Camino Real Alto, 11 · Tel. 604 40 70 26.">
+<meta name="theme-color" content="#e8b53c">
 <link rel="icon" href="img/corona.png">
+<script>document.documentElement.classList.add('js')</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Caslon+Display&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Gloock&display=swap">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"El Real Cafetería","telephone":"+34604407026","priceRange":"10-20 €","servesCuisine":["Desayunos","Tapas","Hamburguesas","Comida vegana"],"address":{"@type":"PostalAddress","streetAddress":"C. Camino Real Alto, 11","postalCode":"16630","addressLocality":"Mota del Cuervo","addressRegion":"Cuenca","addressCountry":"ES"},"geo":{"@type":"GeoCoordinates","latitude":39.5031296,"longitude":-2.8688082},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.4","reviewCount":"233"},"sameAs":["https://www.instagram.com/elreal_cafe/"]}
+</script>
 <style>
-:root{--bg:#0b0907;--cream:#f3ead6;--gold:#d4a21b;--mustard:#e8b53c;--brown:#2b1d12}
+:root{
+  --mostaza:#e8b53c; --oro:#c9971a; --negro:#141110; --crema:#f3ead6; --marron:#2e2016; --verde:#0f6e45; --rojo:#c63a2b;
+  --serif:"Gloock",Georgia,serif; --sans:"Archivo",system-ui,sans-serif;
+  --pad:clamp(18px,4vw,64px);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--cream);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-body{background:radial-gradient(120% 80% at 50% 38%,#1a130c 0%,#0b0907 55%,#060504 100%)}
-a{color:inherit;text-decoration:none}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--crema);color:var(--negro);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-/* grano */
-body::after{content:"";position:fixed;inset:0;z-index:4;pointer-events:none;opacity:.07;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:focus-visible{outline:3px solid var(--rojo);outline-offset:3px;border-radius:6px}
+.cond{font-family:var(--sans);font-stretch:68%;font-weight:850;text-transform:uppercase;letter-spacing:.005em}
+.label{font-family:var(--sans);font-stretch:80%;font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:12.5px}
+.checker{height:22px;background:repeating-conic-gradient(var(--negro) 0 25%,var(--mostaza) 0 50%) 0 0/22px 22px}
+.checker.cr{background:repeating-conic-gradient(var(--negro) 0 25%,var(--crema) 0 50%) 0 0/22px 22px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-family:var(--sans);font-stretch:85%;font-weight:750;font-size:15px;letter-spacing:.04em;text-transform:uppercase;text-decoration:none;transition:background .25s,color .25s,transform .25s}
+.btn svg{width:18px;height:18px;flex:none}
+.btn.dark{background:var(--negro);color:var(--mostaza)}
+.btn.dark:hover{background:var(--rojo);color:var(--crema)}
+.btn.line{border:2px solid currentColor}
+.btn.line:hover{background:var(--negro);color:var(--crema);border-color:var(--negro)}
+.btn.mostaza{background:var(--mostaza);color:var(--negro)}
+.btn.mostaza:hover{background:var(--crema)}
+.progress{position:fixed;left:0;top:0;height:4px;width:100%;background:var(--rojo);transform-origin:0 50%;transform:scaleX(0);z-index:60}
 
-/* NAV */
-.nav{position:fixed;z-index:5;left:23.3vw;right:23.4vw;top:4.6vh;height:4.4vh;display:flex;align-items:center;font:500 max(11px,.78vw)/1 Inter,sans-serif;opacity:0}
-.logo{display:flex;align-items:center;gap:.7vw;margin-right:6vw;white-space:nowrap}
-.logo img{width:2.4vw;min-width:26px;height:auto;display:block}
-.logo b{display:block;font:400 max(17px,1.55vw)/1 "Libre Caslon Display",serif;letter-spacing:-.01em}
-.logo small{display:block;font:400 max(8px,.6vw)/1.3 Inter,sans-serif;opacity:.7;letter-spacing:.04em;margin-top:.15vw}
-.links{display:flex;gap:2.3vw}
-.links a,.links button{opacity:.88;transition:opacity .2s,color .2s;white-space:nowrap}
-.links a:hover,.links button:hover,.links button[aria-expanded=true]{opacity:1;color:var(--mustard)}
-.links svg{width:.62em;height:.62em;margin-left:.3em;vertical-align:.08em;opacity:.8}
-.right{margin-left:auto;display:flex;align-items:center;gap:2.4vw}
-.rating{opacity:.88;white-space:nowrap}
-.rating i{font-style:normal;color:var(--mustard)}
-.pill{display:inline-flex;align-items:center;gap:.45vw;background:var(--mustard);color:#16110a;border-radius:.4vw;padding:.55vw 1vw;transition:transform .2s,background .2s;white-space:nowrap}
-.pill:hover{transform:translateY(-1px);background:#f2c24f}
-.pill svg{width:1em;height:1em}
+/* LOADER (telón) */
+.loader{position:fixed;inset:0;z-index:80;background:var(--mostaza);display:none;place-items:center}
+.js .loader{display:grid}
+.loader img{width:min(140px,30vw)}
+.loader .checker{position:absolute;left:0;right:0;bottom:0}
 
-/* POPOVERS */
-.pop{position:fixed;z-index:6;top:calc(4.6vh + 4.4vh + 1.2vh);width:min(360px,90vw);padding:22px 24px;border-radius:14px;background:rgba(20,15,10,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid rgba(243,234,214,.12);box-shadow:0 30px 60px rgba(0,0,0,.5);font-size:14px;line-height:1.5;opacity:0;transform:translateY(-8px);pointer-events:none;transition:opacity .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
-.pop.open{opacity:1;transform:none;pointer-events:auto}
-.pop h3{font:400 28px/1 "Libre Caslon Display",serif;margin-bottom:12px;color:var(--cream)}
-.pop dl{display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
-.pop dt{opacity:.6}
-.pop p.note{margin-top:12px;opacity:.6;font-size:12.5px}
-.pop blockquote{margin:12px 0 0;padding-left:12px;border-left:2px solid var(--mustard);font-size:13.5px;opacity:.9}
-.pop .stars{color:var(--mustard);letter-spacing:2px}
-.pop a.more{display:inline-block;margin-top:14px;color:var(--mustard);font-weight:500}
+/* HEADER */
+.hd{position:fixed;z-index:50;top:14px;left:var(--pad);right:var(--pad);display:flex;align-items:center;gap:24px;padding:10px 10px 10px 18px;border-radius:999px;transition:background .35s,color .35s,box-shadow .35s}
+.hd.solid{background:rgba(20,17,16,.92);color:var(--crema);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand img{width:38px}
+.brand b{font:400 25px/1 var(--serif);letter-spacing:-.01em}
+.hd nav{display:flex;gap:26px;margin-left:auto}
+.hd nav a{text-decoration:none;font-family:var(--sans);font-stretch:85%;font-weight:650;font-size:14px;letter-spacing:.06em;text-transform:uppercase;position:relative}
+.hd nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.hd nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.today{font-size:13px;font-weight:600;font-stretch:85%;white-space:nowrap;opacity:.85;display:flex;align-items:center;gap:7px}
+.today i{width:8px;height:8px;border-radius:50%;background:var(--verde);display:inline-block}
+.today.closed i{background:var(--rojo)}
+.hd .btn{padding:11px 18px;font-size:13.5px}
+.hd.solid .btn.dark{background:var(--mostaza);color:var(--negro)}
+.menu-btn{display:none;width:44px;height:44px;border-radius:50%;background:var(--negro);color:var(--mostaza);place-items:center}
+.menu-btn svg{width:20px;height:20px}
+.mnav{position:fixed;inset:0;z-index:70;background:var(--negro);color:var(--crema);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);clip-path:inset(0 0 100% 0);transition:clip-path .6s cubic-bezier(.7,0,.2,1);visibility:hidden}
+.mnav.open{clip-path:inset(0);visibility:visible}
+.mnav a{font:400 clamp(44px,13vw,80px)/1.05 var(--serif);text-decoration:none}
+.mnav a:hover{color:var(--mostaza)}
+.mnav .x{position:absolute;top:24px;right:var(--pad);width:48px;height:48px;border-radius:50%;background:var(--mostaza);color:var(--negro);font-size:26px}
+.mnav .btn{align-self:flex-start;margin-top:28px}
 
-/* WORDMARK */
-.mark{position:fixed;z-index:1;left:0;right:0;--fs:min(46vh,32vw);top:calc(46.5vh - var(--fs)*.8);text-align:center;font:400 var(--fs)/1 "Libre Caslon Display",serif;letter-spacing:-.02em;color:var(--cream);opacity:0;white-space:nowrap;pointer-events:none}
-.mark span{color:var(--mustard)}
-.cats{position:fixed;z-index:1;top:51.1vh;left:0;right:0;display:flex;justify-content:center;flex-wrap:wrap;gap:.6vh 2.1vw;font:500 max(10px,.74vw)/1.4 Inter,sans-serif;opacity:0}
-.cats button{opacity:.82;transition:opacity .2s,color .2s;position:relative}
-.cats button:hover,.cats button:focus-visible,.cats button.on{opacity:1;color:var(--mustard)}
+/* HERO */
+.hero{position:relative;min-height:100svh;background:var(--mostaza);overflow:hidden;display:flex;flex-direction:column;padding:110px var(--pad) 0}
+.hero-top{display:flex;justify-content:space-between;gap:20px;align-items:flex-end}
+.hero-top .stars{color:var(--negro)}
+.title{font:400 clamp(92px,min(19.4vw,36vh),380px)/.84 var(--serif);letter-spacing:-.035em;margin-top:auto;display:flex;align-items:center;flex-wrap:nowrap;white-space:nowrap}
+.title .w{display:inline-flex;overflow:hidden;padding:0 .02em .06em;margin-bottom:-.06em}
+.title .ch{display:inline-block;will-change:transform}
+.pill{display:inline-block;width:1.62em;height:.74em;border-radius:999px;overflow:hidden;margin:0 .1em;transform-origin:50% 50%;position:relative;top:.04em;box-shadow:inset 0 0 0 .035em var(--negro)}
+.pill img{width:100%;height:100%;object-fit:cover;object-position:50% 58%;transform:scale(1.15)}
+.sub{display:flex;align-items:flex-start;justify-content:space-between;gap:32px;margin-top:clamp(8px,2vh,24px)}
+.kitchen{font-size:clamp(40px,min(9.2vw,15vh),170px);line-height:.88;color:var(--negro)}
+.kitchen span{display:inline-block}
+.hero-copy{max-width:380px;padding-top:.6vw}
+.hero-copy p{font-size:clamp(16px,1.15vw,19px);line-height:1.5;margin-bottom:22px}
+.hero-copy .cats{font-family:var(--sans);font-stretch:75%;font-weight:800;font-size:clamp(18px,1.5vw,24px);letter-spacing:.02em;text-transform:uppercase;margin-bottom:8px;line-height:1.2}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.hero .checker{margin:auto calc(var(--pad)*-1) 0;margin-top:auto}
+.hero-bottom{height:clamp(30px,6vh,60px);margin-bottom:auto}
+.mascot{position:absolute;pointer-events:none;z-index:2;will-change:transform}
+.mascot img{width:100%;filter:drop-shadow(0 14px 18px rgba(46,32,22,.18))}
+.m-burger{width:clamp(120px,13vw,240px);right:3vw;bottom:7vh}
+.m-cafe{width:clamp(100px,10vw,190px);right:22vw;bottom:4vh}
+.m-patatas{width:clamp(64px,5.5vw,104px);left:50vw;top:12vh;rotate:12deg}
+.m-sandwich{width:clamp(80px,7.5vw,140px);left:40vw;bottom:5vh;rotate:-8deg}
+main{overflow-x:clip}
 
-canvas#c{position:fixed;inset:0;z-index:2;width:100%;height:100%;display:block;pointer-events:none}
+/* MARQUEE */
+.mq{background:var(--negro);color:var(--mostaza);overflow:hidden;padding:clamp(18px,2.6vw,34px) 0;position:relative}
+.mq-track{display:flex;width:max-content;will-change:transform}
+.mq-item{display:flex;align-items:center;gap:clamp(18px,2.4vw,40px);padding-right:clamp(18px,2.4vw,40px);font-size:clamp(44px,7.5vw,128px);line-height:.95;white-space:nowrap}
+.mq-item img{width:clamp(34px,4.6vw,76px);height:auto}
+.mq-item em{font:400 1em/1 var(--serif);font-style:normal;color:var(--crema);text-transform:none;letter-spacing:-.02em}
 
-.addr{display:none;position:fixed;z-index:5;font:400 11px/1.5 Inter,sans-serif;opacity:0}
-.addr a{opacity:.7;transition:opacity .2s}
-.addr a:hover{opacity:1}
+/* SECTIONS */
+section{position:relative}
+.sec{padding:clamp(72px,9vw,128px) var(--pad)}
+.h2{font:400 clamp(52px,8vw,132px)/.9 var(--serif);letter-spacing:-.03em}
+.h2 .ln{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.h2 .ln>span{display:inline-block}
+.sec-head{display:grid;grid-template-columns:1fr minmax(260px,420px);gap:32px;align-items:end;margin-bottom:clamp(36px,5vw,64px)}
+.sec-head p{font-size:18px;line-height:1.5}
+.sec-head .label{display:block;margin-bottom:14px}
 
-:focus-visible{outline:2px solid var(--mustard);outline-offset:3px;border-radius:4px}
+/* NOVEDADES */
+.nov{background:var(--crema)}
+.nov-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px)}
+.card{position:relative}
+.frame{padding:12px;border-radius:26px;background:repeating-conic-gradient(var(--negro) 0 25%,var(--mostaza) 0 50%) 0 0/24px 24px;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.frame-in{border-radius:16px;overflow:hidden;aspect-ratio:4/3.6;background:var(--marron)}
+.frame-in img{width:100%;height:100%;object-fit:cover;object-position:50% 95%;transform:scale(1.06);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.card:hover .frame-in img{transform:scale(1.12)}
+.card h3{font:400 clamp(30px,3vw,46px)/1 var(--serif);letter-spacing:-.02em;margin:26px 0 10px;max-width:16ch}
+.card p{max-width:46ch;opacity:.82}
+.stamp{position:absolute;z-index:3;width:clamp(92px,8vw,120px);aspect-ratio:1;border-radius:50%;background:var(--rojo);color:var(--crema);display:grid;place-items:center;text-align:center;font-family:var(--sans);font-stretch:70%;font-weight:850;font-size:clamp(22px,2vw,30px);line-height:.95;rotate:-10deg;box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.stamp small{display:block;font-size:.42em;font-weight:700;letter-spacing:.12em}
+.nov .stamp{top:-26px;right:-14px}
+.nov .card:nth-child(2) .stamp{background:var(--verde);rotate:8deg}
+.m-aguacate{position:absolute;width:clamp(120px,13vw,220px);right:var(--pad);top:clamp(40px,6vw,90px);rotate:-6deg}
 
-@media (max-width:760px){
-  .nav{left:5vw;right:5vw;top:2.5vh;height:auto}
-  .links,.rating{display:none}
-  .logo{margin-right:0;gap:8px}
-  .logo img{width:30px}
-  .pill{padding:9px 14px;border-radius:7px;gap:6px}
-  .mark{--fs:36vw;top:14vh}
-  .cats{top:36vh;padding:0 8vw;gap:6px 16px;font-size:12px}
-  .addr{display:block;left:5vw;right:5vw;bottom:2.4vh}
-  .pop{left:5vw!important}
+/* ESCAPARATE */
+.shelf{background:var(--negro);color:var(--crema);overflow:hidden}
+.shelf-pin{height:100svh;display:flex;flex-direction:column;justify-content:center;padding:90px 0 40px}
+.shelf-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:0 var(--pad);margin-bottom:clamp(20px,3vh,36px)}
+.shelf-head .h2{color:var(--mostaza)}
+.shelf-head p{max-width:360px;opacity:.75}
+.track{display:flex;gap:clamp(16px,2vw,28px);padding:0 var(--pad);width:max-content;will-change:transform}
+.dish{position:relative;width:clamp(260px,27vw,420px);height:min(60vh,560px);border-radius:28px;padding:16px;display:flex;flex-direction:column;flex:none;color:var(--negro)}
+.dish:nth-child(6n+1){background:var(--mostaza)} .dish:nth-child(6n+2){background:var(--crema)} .dish:nth-child(6n+3){background:var(--verde);color:var(--crema)}
+.dish:nth-child(6n+4){background:var(--rojo);color:var(--crema)} .dish:nth-child(6n+5){background:#e9c98a} .dish:nth-child(6n){background:var(--oro)}
+.dish-img{flex:1;border-radius:18px;overflow:hidden;min-height:0}
+.dish-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.dish:hover .dish-img img{transform:scale(1.1)}
+.dish .label{position:absolute;top:30px;left:30px;background:var(--negro);color:var(--mostaza);padding:7px 11px;border-radius:999px;font-size:11px}
+.dish-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;padding:16px 6px 4px}
+.dish h3{font:400 clamp(26px,2.3vw,36px)/1 var(--serif);letter-spacing:-.02em}
+.dish .pr{font-family:var(--sans);font-stretch:70%;font-weight:850;font-size:22px;white-space:nowrap}
+.shelf-bar{margin:clamp(20px,3vh,32px) var(--pad) 0;height:2px;background:rgba(243,234,214,.15)}
+.shelf-bar i{display:block;height:100%;width:100%;background:var(--mostaza);transform-origin:0 50%;transform:scaleX(0)}
+
+/* CARTA */
+.carta{background:var(--crema)}
+.carta-wrap{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:clamp(28px,4vw,72px);align-items:start}
+.tabs{position:sticky;top:110px;display:flex;flex-direction:column;gap:8px}
+.tab{text-align:left;padding:13px 18px;border-radius:14px;font-family:var(--sans);font-stretch:80%;font-weight:750;font-size:16px;letter-spacing:.04em;text-transform:uppercase;border:2px solid var(--negro);transition:background .25s,color .25s}
+.tab:hover{background:rgba(20,17,16,.07)}
+.tab[aria-selected=true]{background:var(--negro);color:var(--mostaza)}
+.tab-mascot{width:150px;margin:18px auto 0;aspect-ratio:1;display:grid;place-items:center}
+.tab-mascot img{max-height:150px;width:auto}
+.panel{display:block}
+.js .panel{display:none}
+.js .panel.on{display:block}
+.panel h3{font:400 clamp(40px,4.4vw,68px)/1 var(--serif);letter-spacing:-.025em;margin-bottom:6px}
+.panel .note{opacity:.7;margin-bottom:22px}
+.panel+.panel{margin-top:56px}
+.js .panel+.panel{margin-top:0}
+.items{list-style:none;border-top:2px solid var(--negro)}
+.items li{padding:16px 0;border-bottom:1px solid rgba(20,17,16,.18)}
+.row{display:flex;align-items:baseline;gap:10px}
+.row b{font-family:var(--sans);font-stretch:85%;font-weight:750;font-size:clamp(17px,1.35vw,21px);letter-spacing:.01em}
+.row .dots{flex:1;border-bottom:2px dotted rgba(20,17,16,.35);transform:translateY(-5px);min-width:20px}
+.row .p{font-family:var(--sans);font-stretch:70%;font-weight:850;font-size:clamp(19px,1.5vw,24px);white-space:nowrap}
+.items small{display:block;opacity:.7;font-size:15px;margin-top:3px;max-width:62ch}
+.sub-h{font-family:var(--sans);font-stretch:75%;font-weight:850;text-transform:uppercase;letter-spacing:.06em;font-size:15px;margin:28px 0 4px;color:var(--rojo)}
+.carta-foot{margin-top:28px;font-size:15px;opacity:.75}
+
+/* DULCES */
+.dulces{background:var(--marron);color:var(--crema)}
+.dulces .h2{color:var(--mostaza)}
+.sweet-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,1.4vw,22px)}
+.sweet{position:relative}
+.sweet .ph{border-radius:20px;overflow:hidden;aspect-ratio:3/4;background:#1d140d}
+.sweet .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+.sweet:hover .ph img{transform:scale(1.08)}
+.sweet h3{font:400 clamp(24px,2vw,32px)/1 var(--serif);margin-top:16px}
+.sweet .stamp{top:-18px;right:-10px;width:clamp(70px,5.6vw,88px);background:var(--mostaza);color:var(--negro);font-size:clamp(18px,1.5vw,23px)}
+.sweet:nth-child(even) .stamp{rotate:9deg}
+.dulces .foot{margin-top:36px;display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;opacity:.85}
+.dulces .foot b{color:var(--mostaza);font-weight:700}
+
+/* RESEÑAS */
+.rev{background:var(--mostaza);overflow:hidden}
+.rev-grid{display:grid;grid-template-columns:minmax(260px,.8fr) 1.6fr;gap:clamp(28px,4vw,72px);align-items:center}
+.score{font:400 clamp(130px,17vw,280px)/.8 var(--serif);letter-spacing:-.05em}
+.score-stars{font-size:clamp(26px,2.4vw,38px);letter-spacing:4px;margin:14px 0 6px}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.quote{background:var(--crema);border:2px solid var(--negro);border-radius:22px;padding:26px 24px 22px;box-shadow:6px 6px 0 var(--negro);display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:260px}
+.quote:nth-child(1){rotate:-2.5deg} .quote:nth-child(2){rotate:1.5deg;translate:0 22px} .quote:nth-child(3){rotate:-1deg}
+.quote p{font:400 clamp(22px,1.8vw,28px)/1.18 var(--serif);letter-spacing:-.01em}
+.quote span{font-size:13px;opacity:.7}
+.m-sandwich2{position:absolute;width:clamp(100px,10vw,170px);left:46%;top:24px;rotate:6deg;z-index:2}
+
+/* VISÍTANOS */
+.visit{background:var(--negro);color:var(--crema)}
+.visit .h2{color:var(--mostaza)}
+.visit-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,3.5vw,60px);align-items:stretch}
+.photos{display:grid;grid-template-columns:1.6fr 1fr;gap:14px;min-height:520px}
+.photos figure{border-radius:24px;overflow:hidden;position:relative}
+.photos img{width:100%;height:100%;object-fit:cover}
+.photos figcaption{position:absolute;left:14px;bottom:14px;background:rgba(20,17,16,.75);padding:6px 11px;border-radius:999px;font-size:12px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:14px 26px;margin:6px 0 30px;font-size:17px}
+.info dt{opacity:.55;font-family:var(--sans);font-stretch:80%;font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:12.5px;padding-top:4px}
+.hours{list-style:none}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:5px 10px;margin:0 -10px;border-radius:8px}
+.hours li.now{background:rgba(232,181,60,.16);color:var(--mostaza)}
+.big-phone{display:block;font:400 clamp(44px,4.6vw,72px)/1 var(--serif);text-decoration:none;color:var(--mostaza);margin-bottom:24px;letter-spacing:-.02em}
+.big-phone:hover{color:var(--crema)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.tags span{border:1px solid rgba(243,234,214,.35);padding:6px 12px;border-radius:999px;font-size:14px}
+.map{margin-top:clamp(28px,4vw,48px);border-radius:24px;overflow:hidden;height:340px;background:#222}
+.map iframe{width:100%;height:100%;border:0;filter:grayscale(.85) contrast(1.05)}
+
+/* FOOTER */
+.ft{background:var(--mostaza);padding:clamp(48px,6vw,90px) var(--pad) 26px;overflow:hidden}
+.ft-word{font:400 clamp(110px,27vw,470px)/.8 var(--serif);letter-spacing:-.05em;display:flex;align-items:flex-end;gap:.06em;white-space:nowrap}
+.ft-word img{width:.42em;margin-bottom:.12em}
+.ft-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px;margin-top:30px;font-size:14px}
+.ft-row a{text-decoration:none;font-weight:600}
+.ft-row a:hover{text-decoration:underline}
+
+/* Estados de animación (solo con JS) */
+.js .rv{opacity:0;transform:translateY(40px)}
+
+@media (max-width:1100px){
+  .hd nav{display:none}
+  .sweet-grid{grid-template-columns:repeat(3,1fr)}
+  .quotes{grid-template-columns:1fr}
+  .quote{min-height:0}
+  .quote:nth-child(2){translate:0}
+  .rev-grid{grid-template-columns:1fr}
+  .m-sandwich2{left:auto;right:var(--pad)}
 }
-@media (prefers-reduced-motion:reduce){.pop{transition:none}}
+@media (max-width:860px){
+  .today{display:none}
+  .hd .call{display:none}
+  .menu-btn{display:grid;margin-left:auto}
+  .hd{padding:8px 8px 8px 14px}
+  .hero{padding-top:96px}
+  .hero-top{flex-direction:column;align-items:flex-start;gap:6px}
+  .title{font-size:21vw}
+  .sub{flex-direction:column;gap:18px}
+  .kitchen{font-size:clamp(34px,11vw,80px)}
+  .m-burger{top:118px;right:4vw;width:24vw}
+  .m-cafe{right:5vw;bottom:5vh;width:26vw}
+  .m-patatas{display:none}
+  .m-sandwich{display:none}
+  .sec-head{grid-template-columns:1fr}
+  .nov-grid{grid-template-columns:1fr;gap:56px}
+  .m-aguacate{width:30vw;top:30px}
+  .shelf-pin{height:auto;padding:80px 0 60px}
+  .shelf-head{flex-direction:column;align-items:flex-start}
+  .track{width:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .track::-webkit-scrollbar{display:none}
+  .dish{width:78vw;height:110vw;max-height:520px;scroll-snap-align:center}
+  .shelf-bar{display:none}
+  .carta-wrap{grid-template-columns:minmax(0,1fr)}
+  .carta-wrap>*{min-width:0}
+  .info dl{grid-template-columns:1fr;gap:6px}
+  .info dd{margin-bottom:14px}
+  .ft-word{font-size:22vw}
+  .tabs{position:sticky;top:76px;z-index:5;flex-direction:row;overflow-x:auto;background:var(--crema);padding:10px 0;margin:0 calc(var(--pad)*-1);padding-left:var(--pad);padding-right:var(--pad);scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{white-space:nowrap;padding:10px 14px;font-size:14px;flex:none}
+  .tab-mascot{display:none}
+  .sweet-grid{grid-template-columns:repeat(2,1fr)}
+  .sweet:last-child{grid-column:span 2}
+  .sweet:last-child .ph{aspect-ratio:16/10}
+  .visit-grid{grid-template-columns:1fr}
+  .photos{min-height:0;grid-template-columns:1fr 1fr}
+  .photos figure{aspect-ratio:3/4}
+  .m-sandwich2{width:26vw;top:16px}
+}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none}
+  .mnav{transition:none}
+}
 </style>
 </head>
 <body>
+<div class="progress" aria-hidden="true"></div>
+<div class="loader" aria-hidden="true"><img src="img/corona.png" alt=""><div class="checker"></div></div>
 
-<nav class="nav" aria-label="Principal">
-  <a class="logo" href="#" aria-label="El Real Cafetería, inicio">
-    <img src="img/corona.png" alt="" width="781" height="651">
-    <span><b>El Real</b><small>cafetería · Mota del Cuervo</small></span>
-  </a>
-  <div class="links">
-    <a href="https://elrealcafe.my.canva.site/" target="_blank" rel="noopener noreferrer">Carta<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7l4-4M4 3h3v3"/></svg></a>
-    <button type="button" data-pop="horario" aria-expanded="false" aria-controls="horario">Horario<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4l3 3 3-3"/></svg></button>
-    <button type="button" data-pop="resenas" aria-expanded="false" aria-controls="resenas">Reseñas<svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M2 4l3 3 3-3"/></svg></button>
-    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5031296,-2.8688082" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+<header class="hd" id="top">
+  <a class="brand" href="#inicio" aria-label="El Real Cafetería, inicio"><img src="img/corona.png" alt="" width="781" height="651"><b>El Real</b></a>
+  <nav aria-label="Principal">
+    <a href="#carta">Carta</a>
+    <a href="#dulces">Dulces</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#visitanos">Visítanos</a>
+  </nav>
+  <span class="today" id="today"><i></i><span>Martes cerrado</span></span>
+  <a class="btn dark call" href="tel:+34604407026"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M4 8h16M4 16h16"/></svg></button>
+</header>
+<div class="mnav" id="mnav" role="dialog" aria-label="Menú">
+  <button class="x" type="button" aria-label="Cerrar menú">×</button>
+  <a href="#carta">Carta</a><a href="#dulces">Dulces</a><a href="#resenas">Reseñas</a><a href="#visitanos">Visítanos</a>
+  <a class="btn mostaza" href="tel:+34604407026">Llamar · 604 40 70 26</a>
+</div>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="hero-top">
+    <span class="label">Cafetería · Mota del Cuervo · Cuenca</span>
+    <span class="label stars">★ 4,4 · 233 reseñas en Google</span>
   </div>
-  <div class="right">
-    <a class="pill" href="tel:+34604407026"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Llamar</a>
+  <h1 class="title" aria-label="El Real Cafetería">
+    <span class="w" aria-hidden="true"><span class="ch">E</span><span class="ch">l</span></span>
+    <span class="pill" aria-hidden="true"><img src="img/pechugona.jpg" alt="" width="675" height="900"></span>
+    <span class="w" aria-hidden="true"><span class="ch">R</span><span class="ch">e</span><span class="ch">a</span><span class="ch">l</span></span>
+  </h1>
+  <div class="sub">
+    <p class="kitchen cond" aria-label="Coffee and Kitchen"><span>Coffee &amp; Kitchen</span></p>
+    <div class="hero-copy">
+      <p class="cats">Desayunos · Tapas · Burgers · Comida vegana</p>
+      <p>Del café de las nueve a la burger de la noche, en el Camino Real Alto. Para comer aquí o a domicilio.</p>
+      <div class="ctas">
+        <a class="btn dark mag" href="#carta">Ver la carta</a>
+        <a class="btn line mag" href="tel:+34604407026">604 40 70 26</a>
+      </div>
+    </div>
   </div>
-</nav>
+  <div class="hero-bottom"></div>
+  <div class="checker"></div>
+  <div class="mascot m-burger" data-depth="1.2"><img src="img/mascota-burger.png" alt="" width="520" height="478"></div>
+  <div class="mascot m-cafe" data-depth=".8"><img src="img/mascota-cafe.png" alt="" width="502" height="520"></div>
+  <div class="mascot m-patatas" data-depth="1.6"><img src="img/mascota-patatas.png" alt="" width="413" height="520"></div>
+  <div class="mascot m-sandwich" data-depth="1"><img src="img/mascota-sandwich.png" alt="" width="491" height="520"></div>
+</section>
 
-<div class="pop" id="horario" role="dialog" aria-label="Horario">
-  <h3>Horario</h3>
-  <dl>
-    <dt>Lun · Mié a Vie</dt><dd>9:00 – 13:30 y 17:30 – cierre</dd>
-    <dt>Sáb y Dom</dt><dd>9:00 – 15:00 y 17:30 – cierre</dd>
-    <dt>Martes</dt><dd>Cerrado</dd>
-  </dl>
-  <p class="note" style="opacity:.85">C. Camino Real Alto, 11 · 16630 Mota del Cuervo, Cuenca</p>
-  <p class="note">Comer allí y a domicilio · 10–20 € por persona</p>
-</div>
-<div class="pop" id="resenas" role="dialog" aria-label="Reseñas">
-  <h3><span class="stars">★★★★☆</span> 4,4</h3>
-  <p>233 reseñas en Google</p>
-  <blockquote>«Buenísima la hamburguesa de vacuno, las tostas y el bocadillo.»</blockquote>
-  <blockquote>«Siempre que voy a Mota tomo una cerveza, muy buen trato.»</blockquote>
-  <blockquote>«Los 2 camareros que nos atendieron fueron muy majos y amables.»</blockquote>
-  <a class="more" href="https://www.google.com/maps?cid=10396957666449547056" target="_blank" rel="noopener noreferrer">Ver en Google →</a>
+<div class="mq" aria-hidden="true">
+  <div class="mq-track">
+    <div class="mq-item cond"><span>Desayunos</span><img src="img/asterisco.png" alt=""><span>Tapas</span><img src="img/asterisco.png" alt=""><em>burgers</em><img src="img/asterisco.png" alt=""><span>Comida vegana</span><img src="img/asterisco.png" alt=""><span>Batidos bomba</span><img src="img/asterisco.png" alt=""></div>
+    <div class="mq-item cond"><span>Desayunos</span><img src="img/asterisco.png" alt=""><span>Tapas</span><img src="img/asterisco.png" alt=""><em>burgers</em><img src="img/asterisco.png" alt=""><span>Comida vegana</span><img src="img/asterisco.png" alt=""><span>Batidos bomba</span><img src="img/asterisco.png" alt=""></div>
+  </div>
 </div>
 
-<h1 class="mark" aria-label="El Real Cafetería">El Real</h1>
+<section class="sec nov" id="novedades">
+  <div class="mascot m-aguacate" data-depth=".6"><img src="img/mascota-aguacate.png" alt="" width="520" height="360"></div>
+  <div class="sec-head">
+    <div><span class="label">Recién llegadas a la carta</span><h2 class="h2 split"><span class="ln"><span>Novedades</span></span><span class="ln"><span>«El Real»</span></span></h2></div>
+  </div>
+  <div class="nov-grid">
+    <article class="card rv">
+      <div class="stamp">8,00<small>EUROS</small></div>
+      <div class="frame tilt"><div class="frame-in"><img src="img/tosta-salmon.jpg" alt="Tosta de salmón y huevo poché con granada, servida con dos cafés" width="675" height="900" loading="lazy"></div></div>
+      <h3>Tosta de salmón y huevo poché</h3>
+      <p>Aguacate cremoso con un huevo poché perfecto, salmón ahumado, granada crujiente y lascas de parmesano.</p>
+    </article>
+    <article class="card rv">
+      <div class="stamp">7,50<small>EUROS</small></div>
+      <div class="frame tilt"><div class="frame-in"><img src="img/tosta-pavo.jpg" alt="Tosta de pavo y rúcula con aguacate y reducción de balsámico" width="675" height="900" loading="lazy"></div></div>
+      <h3>Tosta de pavo y rúcula</h3>
+      <p>Cremoso queso de untar con rúcula fresca, aguacate laminado, tiernas lonchas de pavo y queso fresco, con un toque de pimienta.</p>
+    </article>
+  </div>
+</section>
 
-<div class="cats" role="group" aria-label="Carta">
-  <button type="button" data-cat="novedades">Novedades</button>
-  <button type="button" data-cat="cafes">Cafés</button>
-  <button type="button" data-cat="desayunos">Desayunos</button>
-  <button type="button" data-cat="postres">Crepes y gofres</button>
-  <button type="button" data-cat="batidos">Batidos</button>
-  <button type="button" data-cat="veganas">Opciones veganas</button>
-  <button type="button" data-cat="burgers">Burgers</button>
-  <button type="button" data-cat="sandwich">Sándwich</button>
-  <button type="button" data-cat="bocadillos">Bocadillos y perritos</button>
-  <button type="button" data-cat="tostas">Tostas</button>
-  <button type="button" data-cat="picar">Para picar</button>
-</div>
+<section class="shelf" id="platos" aria-label="Platos de la casa">
+  <div class="shelf-pin">
+    <div class="shelf-head">
+      <h2 class="h2 split"><span class="ln"><span>Plato</span></span><span class="ln"><span>a plato</span></span></h2>
+      <p>Fotos de la casa, tal y como salen de la cocina. Desliza para ver más.</p>
+    </div>
+    <div class="track">
+      <article class="dish"><span class="label">Tostas frías</span><div class="dish-img"><img src="img/tostas-frias.jpg" alt="Tosta fría con salmón y rúcula" width="600" height="800" loading="lazy"></div><div class="dish-meta"><h3>Tostas frías</h3><span class="pr">8,00 €</span></div></article>
+      <article class="dish"><span class="label">Opciones veganas</span><div class="dish-img"><img src="img/vegana.jpg" alt="Tosta vegana de guacamole con tomate cherry y brotes" width="900" height="675" loading="lazy"></div><div class="dish-meta"><h3>Veganas</h3><span class="pr">desde 7,50 €</span></div></article>
+      <article class="dish"><span class="label">Batidos</span><div class="dish-img"><img src="img/batido-bomba.jpg" alt="Batido bomba con galleta y chocolate" width="533" height="800" loading="lazy"></div><div class="dish-meta"><h3>Batido bomba</h3><span class="pr">7,00 €</span></div></article>
+      <article class="dish"><span class="label">Tostas calientes</span><div class="dish-img"><img src="img/tostas-calientes.jpg" alt="Tosta caliente gratinada" width="600" height="900" loading="lazy"></div><div class="dish-meta"><h3>Tostas calientes</h3><span class="pr">8,50 €</span></div></article>
+      <article class="dish"><span class="label">Para picar</span><div class="dish-img"><img src="img/para-picar.jpg" alt="Cesta de raciones para picar con salsa" width="900" height="675" loading="lazy"></div><div class="dish-meta"><h3>Para picar</h3><span class="pr">desde 8,00 €</span></div></article>
+      <article class="dish"><span class="label">Batidos</span><div class="dish-img"><img src="img/batido-natural.jpg" alt="Batido natural de fresa" width="533" height="800" loading="lazy"></div><div class="dish-meta"><h3>Batido natural</h3><span class="pr">5,50 €</span></div></article>
+    </div>
+    <div class="shelf-bar"><i></i></div>
+  </div>
+</section>
 
-<p class="addr"><a href="https://www.google.com/maps?cid=10396957666449547056" target="_blank" rel="noopener noreferrer">C. Camino Real Alto, 11 · 16630 Mota del Cuervo, Cuenca</a><br><a href="tel:+34604407026">604 40 70 26</a> · <a href="https://www.instagram.com/elreal_cafe/" target="_blank" rel="noopener noreferrer">@elreal_cafe</a></p>
+<section class="sec carta" id="carta">
+  <div class="sec-head">
+    <div><span class="label">Burgers con patatas incluidas</span><h2 class="h2 split"><span class="ln"><span>La carta</span></span></h2></div>
+    <p>Todo lo que sale de la cocina de El Real, del primer café a la última burger. Elige una sección.</p>
+  </div>
+  <div class="carta-wrap">
+    <div>
+      <div class="tabs" role="tablist" aria-label="Secciones de la carta">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="p-burgers" id="t-burgers" data-m="mascota-burger">Burgers</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-bocatas" id="t-bocatas" data-m="mascota-sandwich" tabindex="-1">Sándwich y bocadillos</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-tostas" id="t-tostas" data-m="mascota-aguacate" tabindex="-1">Tostas</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-picar" id="t-picar" data-m="mascota-patatas" tabindex="-1">Para picar</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-veganas" id="t-veganas" data-m="mascota-aguacate" tabindex="-1">Veganas</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-desayunos" id="t-desayunos" data-m="mascota-cafe" tabindex="-1">Desayunos y cafés</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p-dulce" id="t-dulce" data-m="mascota-cafe" tabindex="-1">Dulces y batidos</button>
+      </div>
+      <div class="tab-mascot" aria-hidden="true"><img src="img/mascota-burger.png" alt="" width="520" height="478"></div>
+    </div>
+    <div>
+      <div class="panel on" role="tabpanel" id="p-burgers" aria-labelledby="t-burgers">
+        <h3>Burgers</h3><p class="note">Todas incluyen patatas.</p>
+        <ul class="items">
+          <li><div class="row"><b>Pollo crispy</b><span class="dots"></span><span class="p">8,00 €</span></div><small>Pollo, lechuga, tomate, cebolla caramelizada y queso.</small></li>
+          <li><div class="row"><b>Pollo crispy especial</b><span class="dots"></span><span class="p">9,50 €</span></div><small>Pollo, lechuga, tomate, cebolla caramelizada, queso, bacon y huevo frito.</small></li>
+          <li><div class="row"><b>Buey 100%</b><span class="dots"></span><span class="p">12,00 €</span></div><small>Carne de buey, lechuga, tomate, salsa El Real, queso de cabra y cebolla caramelizada.</small></li>
+          <li><div class="row"><b>La Texas</b><span class="dots"></span><span class="p">12,50 €</span></div><small>Pan de patata, hamburguesa de buey Texas, salsa Hannibal, rúcula, cebolla morada, bacon y queso cheddar fundido.</small></li>
+          <li><div class="row"><b>La Pechugona</b><span class="dots"></span><span class="p">12,50 €</span></div><small>Pan rojo, pechugas de pollo crujiente, salsa Hannibal, rúcula, bacon y queso americano.</small></li>
+          <li><div class="row"><b>La Carnívora</b><span class="dots"></span><span class="p">13,00 €</span></div><small>Pan de patata, hamburguesa de carne Texas, salsa pulled pork, tomate, cebolla, queso cheddar y pulled pork.</small></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-bocatas" aria-labelledby="t-bocatas">
+        <h3>Sándwich y bocadillos</h3><p class="note">Y perritos.</p>
+        <p class="sub-h">Sándwich</p>
+        <ul class="items">
+          <li><div class="row"><b>Mixto</b><span class="dots"></span><span class="p">5,00 €</span></div></li>
+          <li><div class="row"><b>Vegetal</b><span class="dots"></span><span class="p">5,50 €</span></div></li>
+          <li><div class="row"><b>El Real</b><span class="dots"></span><span class="p">7,50 €</span></div><small>Pechuga de pollo, tomate, lechuga, jamón york, bacon, queso y mayonesa.</small></li>
+        </ul>
+        <p class="sub-h">Bocadillos</p>
+        <ul class="items">
+          <li><div class="row"><b>Realito</b><span class="dots"></span><span class="p">9,00 €</span></div><small>Lomo empanado, jamón a la plancha, pimientos fritos, queso y mayonesa.</small></li>
+          <li><div class="row"><b>Chivito</b><span class="dots"></span><span class="p">9,00 €</span></div><small>Lomo, bacon, queso, tomate, lechuga, huevo frito y mayonesa.</small></li>
+        </ul>
+        <p class="sub-h">Perritos</p>
+        <ul class="items">
+          <li><div class="row"><b>Perritos</b><span class="dots"></span><span class="p">6,00 €</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-tostas" aria-labelledby="t-tostas">
+        <h3>Tostas</h3><p class="note">Frías a 8,00 € y calientes a 8,50 €.</p>
+        <p class="sub-h">Tostas frías · 8,00 €</p>
+        <ul class="items">
+          <li><div class="row"><b>Jamón ibérico con tomate</b></div></li>
+          <li><div class="row"><b>Queso de cabra, cebolla caramelizada y nueces</b></div></li>
+          <li><div class="row"><b>Salmón ahumado, queso Philadelphia y rúcula</b></div></li>
+          <li><div class="row"><b>Salmón y huevo poché</b></div></li>
+        </ul>
+        <p class="sub-h">Tostas calientes · 8,50 €</p>
+        <ul class="items">
+          <li><div class="row"><b>Solomillo, queso brie y pimiento confitado</b></div></li>
+          <li><div class="row"><b>Gulas con huevo de codorniz</b></div></li>
+          <li><div class="row"><b>Pollo a la plancha, queso y cebolla</b></div></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-picar" aria-labelledby="t-picar">
+        <h3>Para picar</h3><p class="note">Para compartir, o no.</p>
+        <ul class="items">
+          <li><div class="row"><b>Nachos con carne y guacamole</b><span class="dots"></span><span class="p">9,00 €</span></div><small>Con salsa cheddar.</small></li>
+          <li><div class="row"><b>Patatas El Real</b><span class="dots"></span><span class="p">9,00 €</span></div></li>
+          <li><div class="row"><b>Croquetas caseras</b><span class="dots"></span><span class="p">9,00 €</span></div></li>
+          <li><div class="row"><b>Croquetas de cabrales o piñones</b><span class="dots"></span><span class="p">3,00 €/ud</span></div></li>
+          <li><div class="row"><b>Nuggets de pollo caseros</b><span class="dots"></span><span class="p">9,50 €</span></div></li>
+          <li><div class="row"><b>Tequeños</b><span class="dots"></span><span class="p">9,00 €</span></div></li>
+          <li><div class="row"><b>Aros de cebolla</b><span class="dots"></span><span class="p">8,50 €</span></div></li>
+          <li><div class="row"><b>Queso frito</b><span class="dots"></span><span class="p">9,00 €</span></div><small>Acompañado de mermelada.</small></li>
+          <li><div class="row"><b>Ensalada César</b><span class="dots"></span><span class="p">8,00 €</span></div></li>
+          <li><div class="row"><b>Ensalada El Real</b><span class="dots"></span><span class="p">8,00 €</span></div><small>Rúcula, nueces, queso de cabra, cebolla crispy, tomate y salsa de mostaza y miel.</small></li>
+          <li><div class="row"><b>Alitas Kentucky</b><span class="dots"></span><span class="p">9,00 €</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-veganas" aria-labelledby="t-veganas">
+        <h3>Opciones veganas</h3><p class="note">Con poke bowls para montar a tu gusto.</p>
+        <ul class="items">
+          <li><div class="row"><b>Poke bowl</b><span class="dots"></span><span class="p">8,50 €</span></div><small>Arroz o quinoa, ensalada y 4 ingredientes a elegir (garbanzos, cherry, humus, guacamole, edamames, zanahoria, pepino, maíz, cebolla morada, piña, nueces, remolacha), con salsa de soja.</small></li>
+          <li><div class="row"><b>Nachos, guacamole y cheddar</b><span class="dots"></span><span class="p">8,00 €</span></div></li>
+          <li><div class="row"><b>Hamburguesa de falafel</b><span class="dots"></span><span class="p">8,00 €</span></div><small>Tomate, lechuga, cebolla caramelizada y guacamole.</small></li>
+          <li><div class="row"><b>Tosta de guacamole</b><span class="dots"></span><span class="p">7,50 €</span></div><small>Hojas verdes, cherry, semillas de sésamo y AOVE.</small></li>
+          <li><div class="row"><b>Tosta de mozzarella, tomate y guacamole</b><span class="dots"></span><span class="p">7,50 €</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-desayunos" aria-labelledby="t-desayunos">
+        <h3>Desayunos y cafés</h3><p class="note">Ofertas de desayuno con café incluido.</p>
+        <p class="sub-h">Desayunos</p>
+        <ul class="items">
+          <li><div class="row"><b>Café y tostada (tomate o mermelada)</b><span class="dots"></span><span class="p">3,30 €</span></div></li>
+          <li><div class="row"><b>Café y tostada de jamón</b><span class="dots"></span><span class="p">4,00 €</span></div></li>
+          <li><div class="row"><b>Café y croissant a la plancha</b><span class="dots"></span><span class="p">3,70 €</span></div></li>
+          <li><div class="row"><b>Café y croissant mixto</b><span class="dots"></span><span class="p">4,00 €</span></div></li>
+          <li><div class="row"><b>Tostada de jamón y aguacate</b><span class="dots"></span><span class="p">4,50 €</span></div></li>
+          <li><div class="row"><b>Tostada de aguacate</b><span class="dots"></span><span class="p">3,50 €</span></div></li>
+          <li><div class="row"><b>Tostada de aguacate y queso</b><span class="dots"></span><span class="p">4,00 €</span></div></li>
+          <li><div class="row"><b>Tostada de aguacate y huevo</b><span class="dots"></span><span class="p">4,50 €</span></div></li>
+        </ul>
+        <p class="sub-h">Cafés</p>
+        <ul class="items">
+          <li><div class="row"><b>Solo</b><span class="dots"></span><span class="p">1,40 €</span></div></li>
+          <li><div class="row"><b>Con leche</b><span class="dots"></span><span class="p">1,60 €</span></div></li>
+          <li><div class="row"><b>Cortado</b><span class="dots"></span><span class="p">1,50 €</span></div></li>
+          <li><div class="row"><b>Bombón</b><span class="dots"></span><span class="p">1,70 €</span></div></li>
+          <li><div class="row"><b>Capuccino / Latte</b><span class="dots"></span><span class="p">1,90 €</span></div></li>
+          <li><div class="row"><b>Té especial</b><span class="dots"></span><span class="p">1,90 €</span></div></li>
+          <li><div class="row"><b>Té matcha especial</b><span class="dots"></span><span class="p">4,00 €</span></div></li>
+        </ul>
+      </div>
+      <div class="panel" role="tabpanel" id="p-dulce" aria-labelledby="t-dulce">
+        <h3>Dulces y batidos</h3><p class="note">Crepes, tortitas y gofres también en versión salada.</p>
+        <ul class="items">
+          <li><div class="row"><b>Crepes</b><span class="dots"></span><span class="p">5,00 €</span></div></li>
+          <li><div class="row"><b>Tortitas</b><span class="dots"></span><span class="p">5,00 €</span></div></li>
+          <li><div class="row"><b>Gofres</b><span class="dots"></span><span class="p">5,00 €</span></div></li>
+          <li><div class="row"><b>Postres caseros</b><span class="dots"></span><span class="p">5,00 €</span></div></li>
+          <li><div class="row"><b>Batido natural</b><span class="dots"></span><span class="p">5,50 €</span></div></li>
+          <li><div class="row"><b>Batido bomba</b><span class="dots"></span><span class="p">7,00 €</span></div></li>
+        </ul>
+      </div>
+      <p class="carta-foot">¿Alergias o intolerancias? Pregunta en barra o consulta la tabla de alérgenos en su <a href="https://elrealcafe.my.canva.site/" target="_blank" rel="noopener noreferrer">carta online</a>.</p>
+    </div>
+  </div>
+</section>
 
-<canvas id="c" aria-hidden="true"></canvas>
+<section class="sec dulces" id="dulces">
+  <div class="sec-head">
+    <div><span class="label">Crepes · Tortitas · Gofres · Postres caseros</span><h2 class="h2 split"><span class="ln"><span>Endúlzate</span></span><span class="ln"><span>el día</span></span></h2></div>
+    <p>Cinco euros cada uno. Crepes, tortitas y gofres también se piden en versión salada.</p>
+  </div>
+  <div class="sweet-grid">
+    <article class="sweet rv"><div class="stamp">5,00 €</div><div class="ph"><img src="img/gofres.jpg" alt="Gofre con helado y sirope de chocolate" width="800" height="533" loading="lazy"></div><h3>Gofres</h3></article>
+    <article class="sweet rv"><div class="stamp">5,00 €</div><div class="ph"><img src="img/crepes.jpg" alt="Crepe con nata y chocolate" width="800" height="533" loading="lazy"></div><h3>Crepes</h3></article>
+    <article class="sweet rv"><div class="stamp">5,00 €</div><div class="ph"><img src="img/tortitas.jpg" alt="Tortitas con chocolate y galletas" width="800" height="600" loading="lazy"></div><h3>Tortitas</h3></article>
+    <article class="sweet rv"><div class="stamp">5,00 €</div><div class="ph"><img src="img/postres-1.jpg" alt="Tarta casera de zanahoria en la vitrina" width="533" height="800" loading="lazy"></div><h3>Postres caseros</h3></article>
+    <article class="sweet rv"><div class="stamp">5,00 €</div><div class="ph"><img src="img/postres-2.jpg" alt="Tartas caseras: zanahoria, chocolate y tarta de queso" width="800" height="533" loading="lazy"></div><h3>Tartas de la vitrina</h3></article>
+  </div>
+  <div class="foot"><span><b>Batido natural</b> 5,50 €</span><span><b>Batido bomba</b> 7,00 €</span></div>
+</section>
 
-<script type="importmap">
-{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
-</script>
-<script type="module">
-if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) { document.documentElement.style.display = 'none'; } }
+<section class="sec rev" id="resenas">
+  <div class="mascot m-sandwich2" data-depth=".7"><img src="img/mascota-sandwich.png" alt="" width="491" height="520"></div>
+  <div class="rev-grid">
+    <div>
+      <span class="label">Lo que dicen en Google</span>
+      <p class="score" aria-label="4,4 sobre 5"><span id="score">4,4</span></p>
+      <p class="score-stars" aria-hidden="true">★★★★<span style="opacity:.35">★</span></p>
+      <p>233 reseñas · <a href="https://www.google.com/maps?cid=10396957666449547056" target="_blank" rel="noopener noreferrer">Leer en Google</a></p>
+    </div>
+    <div class="quotes">
+      <figure class="quote rv"><p>«Buenísima la hamburguesa de vacuno, las tostas y el bocadillo.»</p><span>Reseña en Google</span></figure>
+      <figure class="quote rv"><p>«Siempre que voy a Mota tomo una cerveza, muy buen trato.»</p><span>Reseña en Google</span></figure>
+      <figure class="quote rv"><p>«Los 2 camareros que nos atendieron fueron muy majos y amables.»</p><span>Reseña en Google</span></figure>
+    </div>
+  </div>
+</section>
 
-const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-const ease = 'cubic-bezier(.2,.8,.2,1)';
-const $ = s => document.querySelector(s);
-// Entradas de texto (funciona aunque falle WebGL)
-const intro = () => {
-  if (reduce) { ['.mark','.nav','.cats','.addr'].forEach(s => $(s).style.opacity = 1); return; }
-  $('.mark').animate([{opacity:0,transform:'translateY(4vh)',filter:'blur(14px)'},{opacity:1,transform:'none',filter:'blur(0)'}],{duration:1400,delay:150,easing:ease,fill:'forwards'});
-  $('.nav').animate([{opacity:0,transform:'translateY(-1.2vh)'},{opacity:1,transform:'none'}],{duration:900,delay:700,easing:ease,fill:'forwards'});
-  $('.cats').animate([{opacity:0,transform:'translateY(1.2vh)'},{opacity:1,transform:'none'}],{duration:900,delay:850,easing:ease,fill:'forwards'});
-  $('.addr').animate([{opacity:0},{opacity:1}],{duration:900,delay:1100,easing:ease,fill:'forwards'});
-};
+<section class="sec visit" id="visitanos">
+  <div class="sec-head">
+    <div><span class="label">C. Camino Real Alto, 11 · Mota del Cuervo</span><h2 class="h2 split"><span class="ln"><span>Pásate</span></span><span class="ln"><span>por El Real</span></span></h2></div>
+  </div>
+  <div class="visit-grid">
+    <div class="photos">
+      <figure class="rv"><img src="img/local.jpg" alt="Interior de El Real con bombillas colgantes" width="1599" height="1066" loading="lazy" style="object-position:30% 50%"><figcaption>El local</figcaption></figure>
+      <figure class="rv"><img src="img/barra.jpg" alt="Grifos de cerveza Estrella Galicia en la barra" width="533" height="800" loading="lazy"><figcaption>La barra</figcaption></figure>
+    </div>
+    <div class="info rv">
+      <a class="big-phone" href="tel:+34604407026">604 40 70 26</a>
+      <div class="tags"><span>Para comer aquí</span><span>A domicilio</span><span>10–20 € por persona</span></div>
+      <dl>
+        <dt>Horario</dt>
+        <dd><ul class="hours" id="hours">
+          <li data-d="1"><span>Lunes</span><span>9:00–13:30 · 17:30–cierre</span></li>
+          <li data-d="2"><span>Martes</span><span>Cerrado</span></li>
+          <li data-d="3"><span>Miércoles</span><span>9:00–13:30 · 17:30–cierre</span></li>
+          <li data-d="4"><span>Jueves</span><span>9:00–13:30 · 17:30–cierre</span></li>
+          <li data-d="5"><span>Viernes</span><span>9:00–13:30 · 17:30–cierre</span></li>
+          <li data-d="6"><span>Sábado</span><span>9:00–15:00 · 17:30–cierre</span></li>
+          <li data-d="0"><span>Domingo</span><span>9:00–15:00 · 17:30–cierre</span></li>
+        </ul></dd>
+        <dt>Dirección</dt><dd>C. Camino Real Alto, 11<br>16630 Mota del Cuervo, Cuenca</dd>
+        <dt>Instagram</dt><dd><a href="https://www.instagram.com/elreal_cafe/" target="_blank" rel="noopener noreferrer">@elreal_cafe</a></dd>
+      </dl>
+      <div class="ctas">
+        <a class="btn mostaza mag" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5031296,-2.8688082" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+        <a class="btn line mag" href="tel:+34604407026">Llamar</a>
+      </div>
+    </div>
+  </div>
+  <div class="map"><iframe sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" title="Mapa de El Real Cafetería en Mota del Cuervo" src="https://maps.google.com/maps?q=39.5031296,-2.8688082&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>
+</section>
+</main>
 
-// Ventanas de Horario y Reseñas
-const pops = [...document.querySelectorAll('[data-pop]')];
-const closePops = () => pops.forEach(b => { b.setAttribute('aria-expanded','false'); $('#'+b.dataset.pop).classList.remove('open'); });
-pops.forEach(b => b.addEventListener('click', e => {
-  e.stopPropagation();
-  const p = $('#'+b.dataset.pop), open = !p.classList.contains('open');
-  closePops();
-  if (open) { const r = b.getBoundingClientRect(); p.style.left = Math.max(12, Math.min(r.left - 24, innerWidth - p.offsetWidth - 12)) + 'px'; p.classList.add('open'); b.setAttribute('aria-expanded','true'); }
-}));
-document.addEventListener('click', e => { if (!e.target.closest('.pop')) closePops(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') closePops(); });
+<footer class="ft">
+  <p class="ft-word" aria-label="El Real"><img src="img/corona.png" alt="" width="781" height="651"><span>El Real</span></p>
+  <div class="checker" style="margin:26px calc(var(--pad)*-1) 0"></div>
+  <div class="ft-row">
+    <span>El Real Cafetería · Coffee &amp; Kitchen · C. Camino Real Alto, 11 · 16630 Mota del Cuervo</span>
+    <span><a href="tel:+34604407026">604 40 70 26</a> · <a href="https://www.instagram.com/elreal_cafe/" target="_blank" rel="noopener noreferrer">Instagram</a> · <a href="#inicio">Volver arriba ↑</a></span>
+  </div>
+</footer>
 
-// ---------- Carta: piezas de la fila (datos reales de su carta) ----------
-const C = {cream:'#efe4cc', mustard:'#e8b53c', gold:'#c9971a', brown:'#2e2016', green:'#0f6e45', black:'#121010', red:'#b8332a'};
-const P = (img, name, price, cat, band) => ({type:'photo', img:'img/'+img+'.jpg', name, price, cat, band});
-const T = (title, rows, cat, bg, fg, accent) => ({type:'text', title, rows, cat, bg, fg, accent});
-const PIECES = [
-  P('pechugona','La Pechugona','12,50 €','burgers',C.red),
-  T('Cafés',[['Solo','1,40'],['Con leche','1,60'],['Cortado','1,50'],['Bombón','1,70'],['Capuccino / Latte','1,90'],['Té especial','1,90'],['Té matcha especial','4,00']],'cafes',C.brown,C.cream,C.mustard),
-  P('tosta-salmon','Tosta de salmón y huevo poché','8,00 €','novedades',C.mustard),
-  P('gofres','Gofres','5,00 €','postres',C.cream),
-  T('Burgers',[['Pollo crispy','8,00'],['Pollo crispy especial','9,50'],['Buey 100%','12,00'],['La Texas','12,50'],['La Pechugona','12,50'],['La Carnívora','13,00']],'burgers',C.cream,C.brown,C.red),
-  P('batido-bomba','Batido bomba','7,00 €','batidos',C.brown),
-  P('tostas-frias','Tostas frías','8,00 €','tostas',C.gold),
-  T('Desayunos',[['Café y tostada','3,30'],['Café y tostada de jamón','4,00'],['Café y croissant plancha','3,70'],['Café y croissant mixto','4,00']],'desayunos',C.black,C.mustard,C.mustard),
-  P('crepes','Crepes','5,00 €','postres',C.mustard),
-  P('vegana','Opciones veganas','desde 7,50 €','veganas',C.green),
-  P('postres-1','Postres caseros','5,00 €','postres',C.brown),
-  T('Sándwich',[['Mixto','5,00'],['Vegetal','5,50'],['El Real','7,50']],'sandwich',C.mustard,C.brown,C.brown),
-  P('tosta-pavo','Tosta de pavo y rúcula','7,50 €','novedades',C.green),
-  P('para-picar','Para picar','','picar',C.cream),
-  P('batido-natural','Batido natural','5,50 €','batidos',C.mustard),
-  T('Bocadillos',[['Realito','9,00'],['Chivito','9,00'],['Perritos','6,00']],'bocadillos',C.green,C.cream,C.mustard),
-  P('tortitas','Tortitas','5,00 €','postres',C.gold),
-  P('tostas-calientes','Tostas calientes','8,50 €','tostas',C.brown),
-  T('Tostadas',[['Jamón y aguacate','4,50'],['Aguacate','3,50'],['Aguacate y queso','4,00'],['Aguacate y huevo','4,50']],'desayunos',C.cream,C.green,C.green),
-  P('postres-2','Postres caseros','5,00 €','postres',C.black),
-];
-const N = PIECES.length;
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(() => {
+  if (window.top !== window.self) { try { window.top.location = window.self.location; } catch (e) { document.documentElement.style.display = 'none'; } }
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
 
-const loadImg = src => new Promise(r => { const i = new Image(); i.decoding = 'async'; i.onload = () => r(i); i.onerror = () => r(null); i.src = src; });
-const fontsReady = Promise.race([Promise.all([document.fonts.load('400 60px "Libre Caslon Display"'), document.fonts.load('500 30px Inter'), document.fonts.load('400 30px Inter')]), new Promise(r => setTimeout(r, 2500))]);
+  // Horario de hoy (sin inventar la hora de cierre)
+  const d = new Date().getDay();
+  const todayTxt = d === 2 ? 'Hoy cerrado (martes)' : (d === 0 || d === 6 ? 'Hoy 9:00–15:00 · 17:30–cierre' : 'Hoy 9:00–13:30 · 17:30–cierre');
+  $('#today span').textContent = todayTxt; if (d === 2) $('#today').classList.add('closed');
+  const li = $(`#hours li[data-d="${d}"]`); if (li) li.classList.add('now');
 
-// Tira de cuadros (como la carta de Canva)
-function checker(g, y, w, h, a, b) { const s = h; for (let x = 0, k = 0; x < w; x += s, k++) { g.fillStyle = k % 2 ? a : b; g.fillRect(x, y, s, s / 2); g.fillStyle = k % 2 ? b : a; g.fillRect(x, y + s / 2, s, s / 2); } }
-function wrap(g, text, maxW) { const words = text.split(' '), lines = []; let l = ''; for (const w of words) { const t = l ? l + ' ' + w : w; if (g.measureText(t).width > maxW && l) { lines.push(l); l = w; } else l = t; } lines.push(l); return lines; }
-const lum = hex => { const n = parseInt(hex.slice(1), 16); return ((n >> 16) * .299 + ((n >> 8) & 255) * .587 + (n & 255) * .114) / 255; };
+  // Menú móvil
+  const mnav = $('#mnav'), mb = $('.menu-btn');
+  const setMenu = o => { mnav.classList.toggle('open', o); mb.setAttribute('aria-expanded', o); if (o) $('.x', mnav).focus(); };
+  mb.addEventListener('click', () => setMenu(true));
+  $('.x', mnav).addEventListener('click', () => setMenu(false));
+  $$('a', mnav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+  addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
 
-function drawCover(p, img, crown) {
-  const W = 600, H = 800, cv = document.createElement('canvas'); cv.width = W; cv.height = H; const g = cv.getContext('2d');
-  if (p.type === 'photo') {
-    const ph = 610;
-    g.fillStyle = p.band; g.fillRect(0, 0, W, H);
-    if (img) { const s = Math.max(W / img.width, ph / img.height), w = img.width * s, h = img.height * s; g.drawImage(img, (W - w) / 2, (ph - h) / 2, w, h); }
-    checker(g, ph, W, 20, '#111', C.mustard);
-    const fg = lum(p.band) > .55 ? C.brown : C.cream;
-    g.fillStyle = fg; g.textBaseline = 'alphabetic';
-    g.font = '400 50px "Libre Caslon Display", serif';
-    let lines = wrap(g, p.name, W - 150);
-    if (lines.length > 1) { g.font = '400 40px "Libre Caslon Display", serif'; lines = wrap(g, p.name, W - 150).slice(0, 2); }
-    const ys = lines.length > 1 ? [680, 722] : [712];
-    lines.forEach((l, i) => g.fillText(l, 40, ys[i]));
-    if (p.price) { g.font = '500 26px Inter, sans-serif'; g.globalAlpha = .85; g.fillText(p.price, 40, lines.length > 1 ? 768 : 762); g.globalAlpha = 1; }
-    if (crown) { g.globalAlpha = .9; g.drawImage(crown, W - 92, 724, 54, 45); g.globalAlpha = 1; }
-  } else {
-    g.fillStyle = p.bg; g.fillRect(0, 0, W, H);
-    checker(g, 0, W, 26, '#111', C.mustard);
-    if (crown) g.drawImage(crown, 40, 70, 74, 62);
-    g.fillStyle = p.fg; g.font = '400 92px "Libre Caslon Display", serif'; g.fillText(p.title, 38, 236);
-    g.fillStyle = p.accent; g.fillRect(40, 262, 70, 4);
-    const rowH = Math.min(70, 470 / p.rows.length); let y = 330;
-    for (const [n, pr] of p.rows) {
-      g.fillStyle = p.fg; g.font = '500 28px Inter, sans-serif'; g.fillText(n, 40, y);
-      const nw = g.measureText(n).width; g.font = '500 28px Inter, sans-serif'; const pw = g.measureText(pr + ' €').width;
-      g.fillText(pr + ' €', W - 40 - pw, y);
-      g.globalAlpha = .35; g.font = '400 24px Inter, sans-serif'; let d = ''; while (g.measureText(d + '.').width < W - 100 - nw - pw - 24) d += '.'; g.fillText(d, 40 + nw + 12, y); g.globalAlpha = 1;
-      y += rowH;
-    }
-    g.globalAlpha = .55; g.fillStyle = p.fg; g.font = '400 20px Inter, sans-serif'; g.fillText('EL REAL · MOTA DEL CUERVO', 40, H - 34); g.globalAlpha = 1;
-  }
-  return cv;
-}
-
-intro();
-
-let THREE, RoomEnvironment;
-try {
-  THREE = await import('three');
-  ({ RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js'));
-} catch (e) { THREE = null; }
-
-if (THREE) {
-  const canvas = $('#c');
-  let renderer;
-  try { renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true}); } catch (e) { renderer = null; }
-  if (renderer) {
-    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
-    renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05;
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    const scene = new THREE.Scene();
-    const pm = new THREE.PMREMGenerator(renderer);
-    scene.environment = pm.fromScene(new RoomEnvironment(), .04).texture; scene.environmentIntensity = .55;
-    const key = new THREE.DirectionalLight(0xfff0dc, 2.4); key.position.set(-4, 6, 6); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xbfd2ff, 1.1); rim.position.set(6, 3, -4); scene.add(rim);
-    scene.add(new THREE.AmbientLight(0xffffff, .12));
-    const cam = new THREE.PerspectiveCamera(19.5, 1, .1, 100);
-    cam.position.set(3.6, 2.15, 7.4);
-    const look = new THREE.Vector3(-1.4, .05, -.6);
-
-    const geo = new THREE.BoxGeometry(.86, 1.1467, .04);
-    const maxAniso = renderer.capabilities.getMaxAnisotropy();
-    const [crown, imgs] = await Promise.all([loadImg('img/corona.png'), Promise.all(PIECES.map(p => p.img ? loadImg(p.img) : null)), fontsReady]);
-    const books = PIECES.map((p, i) => {
-      const tex = new THREE.CanvasTexture(drawCover(p, imgs[i], crown));
-      tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = maxAniso;
-      const edgeCol = new THREE.Color(p.type === 'photo' ? p.band : p.bg).multiplyScalar(.62);
-      const edge = new THREE.MeshPhysicalMaterial({color:edgeCol, roughness:.55, clearcoat:.3});
-      const back = new THREE.MeshStandardMaterial({color:edgeCol, roughness:.6});
-      const cover = new THREE.MeshPhysicalMaterial({map:tex, roughness:.42, clearcoat:.55, clearcoatRoughness:.35});
-      const mesh = new THREE.Mesh(geo, [edge, edge, edge, edge, cover, back]);
-      const grp = new THREE.Group();
-      grp.position.set(1.55 + i * -.56, -1.3, .9 + i * -.2); grp.rotation.y = .32;
-      grp.add(mesh); scene.add(grp);
-      mesh.position.y = reduce ? 0 : -3;
-      return {mesh, cat:p.cat, y:mesh.position.y, vy:0, z:0, vz:0, sx:0, sy:0};
+  // Pestañas de la carta
+  const tabs = $$('.tab'), tm = $('.tab-mascot img');
+  const select = (t, focus) => {
+    tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1; $('#' + x.getAttribute('aria-controls')).classList.toggle('on', on); });
+    if (focus) t.focus();
+    const src = 'img/' + t.dataset.m + '.png';
+    if (window.gsap && !reduce) {
+      gsap.fromTo($$('#' + t.getAttribute('aria-controls') + ' li, #' + t.getAttribute('aria-controls') + ' h3'), {y: 24, opacity: 0}, {y: 0, opacity: 1, duration: .55, stagger: .04, ease: 'power3.out'});
+      if (!tm.src.endsWith(src)) gsap.timeline().to(tm, {scale: 0, rotate: -20, duration: .2, ease: 'power2.in', onComplete: () => tm.src = src}).to(tm, {scale: 1, rotate: 0, duration: .55, ease: 'back.out(2.2)'});
+    } else tm.src = src;
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => select(t));
+    t.addEventListener('keydown', e => {
+      const k = {ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1}[e.key];
+      if (k) { e.preventDefault(); select(tabs[(i + k + tabs.length) % tabs.length], true); }
     });
+  });
 
-    // Puntero
-    const ptr = {x:-1e4, y:-1e4, in:false, t:-1e9};
-    const coarse = matchMedia('(pointer: coarse)').matches;
-    addEventListener('pointermove', e => { if (e.pointerType === 'touch') return; ptr.x = e.clientX; ptr.y = e.clientY; ptr.in = true; ptr.t = performance.now(); });
-    document.addEventListener('pointerleave', () => ptr.in = false);
-    addEventListener('blur', () => ptr.in = false);
-    let activeCat = null;
-    document.querySelectorAll('[data-cat]').forEach(b => {
-      const on = () => { activeCat = b.dataset.cat; document.querySelectorAll('[data-cat]').forEach(x => x.classList.toggle('on', x === b)); };
-      const off = () => { if (activeCat === b.dataset.cat) activeCat = null; b.classList.remove('on'); };
-      b.addEventListener('mouseenter', on); b.addEventListener('focus', on);
-      b.addEventListener('mouseleave', off); b.addEventListener('blur', off);
-      b.addEventListener('click', () => { on(); if (coarse) { clearTimeout(b._t); b._t = setTimeout(off, 2600); } });
-    });
+  const header = $('.hd');
+  const onScrollHeader = y => header.classList.toggle('solid', y > innerHeight * .75);
+  addEventListener('scroll', () => onScrollHeader(scrollY), {passive: true});
 
-    let mobile = false;
-    function resize() {
-      const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false);
-      cam.aspect = w / h; cam.fov = w < h ? 40 : 19.5; mobile = w <= 760;
-      cam.updateProjectionMatrix(); cam.lookAt(look);
-    }
-    addEventListener('resize', resize); resize();
+  if (!window.gsap || reduce) { document.documentElement.classList.remove('js'); $$('.rv').forEach(e => { e.style.opacity = 1; e.style.transform = 'none'; }); return; }
+  gsap.registerPlugin(ScrollTrigger);
 
-    const v = new THREE.Vector3(), K = 70, Cd = 12.5;
-    const t0 = performance.now(); let last = t0;
-    function frame(now) {
-      const dt = Math.min(.05, (now - last) / 1000); last = now;
-      const t = (now - t0) / 1000;
-      const w = innerWidth, h = innerHeight, s = Math.max(w, h) * .085;
-      books.forEach(b => { v.set(0, .1, 0); b.mesh.localToWorld(v); v.project(cam); b.sx = (v.x + 1) / 2 * w; b.sy = (1 - v.y) / 2 * h; });
-      // cursor virtual en móvil o tras 4 s quieto
-      let px = ptr.x, py = ptr.y, live = ptr.in && document.hasFocus();
-      if (!reduce && (coarse || now - ptr.t > 4000)) {
-        const u = (Math.sin(t * .45) + 1) / 2, a = books[N - 2], c = books[1];
-        px = a.sx + (c.sx - a.sx) * u; py = a.sy + (c.sy - a.sy) * u; live = true;
-      }
-      const catIdx = activeCat ? books.map((b, i) => b.cat === activeCat ? i : -1).filter(i => i >= 0) : null;
-      books.forEach((b, i) => {
-        let inf = 0;
-        if (catIdx) inf = Math.max(...catIdx.map(j => Math.exp(-((i - j) ** 2) / .9)));
-        else if (live) inf = Math.exp(-(((b.sx - px) ** 2) + ((b.sy - py) * .55) ** 2) / (s * s));
-        let ty = .78 * inf;
-        if (!reduce && t < .25 + (N - i) * .035 * (32 / N)) ty = -3;
-        const tz = ty > 0 ? ty * .35 : 0;
-        const hh = dt / 4;
-        for (let k = 0; k < 4; k++) {
-          b.vy += ((ty - b.y) * K - b.vy * Cd) * hh; b.y += b.vy * hh;
-          b.vz += ((tz - b.z) * K - b.vz * Cd) * hh; b.z += b.vz * hh;
-        }
-        b.mesh.position.y = b.y; b.mesh.position.z = b.z; b.mesh.rotation.x = -b.vy * .012;
-      });
-      renderer.render(scene, cam);
-      requestAnimationFrame(frame);
-    }
-    requestAnimationFrame(frame);
+  // Scroll suave
+  let lenis = null, vel = 0;
+  if (window.Lenis) {
+    lenis = new Lenis({lerp: .1, smoothWheel: true});
+    lenis.on('scroll', e => { ScrollTrigger.update(); vel = e.velocity || 0; onScrollHeader(e.scroll); });
+    gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href'); if (id.length > 1 && $(id)) { e.preventDefault(); lenis.scrollTo(id === '#inicio' ? 0 : $(id), {offset: id === '#inicio' ? 0 : -20, duration: 1.4}); } }));
   }
-}
+
+  // Barra de progreso
+  gsap.to('.progress', {scaleX: 1, ease: 'none', scrollTrigger: {start: 0, end: 'max', scrub: true}});
+
+  // Telón de entrada + portada
+  const tl = gsap.timeline({defaults: {ease: 'power4.out'}});
+  tl.from('.loader img', {scale: 0, rotate: -25, duration: .7, ease: 'back.out(2)'})
+    .to('.loader', {yPercent: -100, duration: .9, ease: 'power4.inOut'}, '+=.25')
+    .set('.loader', {display: 'none'})
+    .from('.title .ch', {yPercent: 110, rotate: 8, duration: 1.1, stagger: .05}, '-=.45')
+    .from('.pill', {scaleX: 0, duration: 1, ease: 'expo.out'}, '<.15')
+    .from('.pill img', {scale: 1.6, duration: 1.4}, '<')
+    .from('.kitchen span', {yPercent: 100, opacity: 0, duration: .9}, '<.2')
+    .from('.hero-top > *, .hero-copy > *', {y: 24, opacity: 0, duration: .8, stagger: .07}, '<.1')
+    .from('.hero .mascot', {scale: 0, rotate: () => gsap.utils.random(-30, 30), duration: .9, stagger: .09, ease: 'back.out(1.8)'}, '<.1')
+    .from('.hd', {y: -30, opacity: 0, duration: .8}, '<');
+
+  // Mascotas: flotan y siguen al ratón
+  $$('.mascot').forEach((m, i) => {
+    gsap.to(m.firstElementChild, {y: -14, rotate: i % 2 ? 4 : -4, duration: 2.2 + i * .3, yoyo: true, repeat: -1, ease: 'sine.inOut'});
+    gsap.to(m, {yPercent: -40 * (+m.dataset.depth || 1), ease: 'none', scrollTrigger: {trigger: m.closest('section'), start: 'top top', end: 'bottom top', scrub: true}});
+  });
+  if (fine) {
+    const ms = $$('.hero .mascot').map(m => ({d: +m.dataset.depth, x: gsap.quickTo(m, 'x', {duration: .9, ease: 'power3'}), y: gsap.quickTo(m, 'y', {duration: .9, ease: 'power3'})}));
+    $('.hero').addEventListener('pointermove', e => { const nx = e.clientX / innerWidth - .5, ny = e.clientY / innerHeight - .5; ms.forEach(m => { m.x(nx * 50 * m.d); m.y(ny * 36 * m.d); }); });
+    // Botones magnéticos
+    $$('.mag').forEach(b => { const x = gsap.quickTo(b, 'x', {duration: .5, ease: 'power3'}), y = gsap.quickTo(b, 'y', {duration: .5, ease: 'power3'});
+      b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); x((e.clientX - r.left - r.width / 2) * .25); y((e.clientY - r.top - r.height / 2) * .35); });
+      b.addEventListener('pointerleave', () => { x(0); y(0); }); });
+    // Inclinación 3D de los marcos
+    $$('.tilt').forEach(f => { const rx = gsap.quickTo(f, 'rotationX', {duration: .6}), ry = gsap.quickTo(f, 'rotationY', {duration: .6});
+      gsap.set(f, {transformPerspective: 900});
+      f.addEventListener('pointermove', e => { const r = f.getBoundingClientRect(); ry(((e.clientX - r.left) / r.width - .5) * 10); rx(-((e.clientY - r.top) / r.height - .5) * 8); });
+      f.addEventListener('pointerleave', () => { rx(0); ry(0); }); });
+  }
+  // Ken Burns de la foto de portada
+  gsap.to('.pill img', {scale: 1.28, xPercent: -4, duration: 9, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 2});
+
+  // Banda que se mueve sola y acelera con el scroll
+  const track = $('.mq-track'); let mx = 0;
+  gsap.ticker.add(() => {
+    const w = track.scrollWidth / 2; mx -= .9 + Math.min(Math.abs(vel), 60) * .35; if (-mx >= w) mx += w;
+    gsap.set(track, {x: mx, skewX: gsap.utils.clamp(-10, 10, -vel * .4)});
+  });
+
+  // Títulos por líneas
+  $$('.split').forEach(h => gsap.from($$('.ln > span', h), {yPercent: 105, rotate: 3, duration: 1.1, stagger: .1, ease: 'power4.out', scrollTrigger: {trigger: h, start: 'top 85%'}}));
+  // Apariciones
+  ScrollTrigger.batch('.rv', {start: 'top 88%', onEnter: els => gsap.to(els, {opacity: 1, y: 0, duration: 1, stagger: .1, ease: 'power3.out', overwrite: true})});
+  $$('.stamp').forEach(s => gsap.from(s, {scale: 0, rotate: '-=60', duration: .8, ease: 'back.out(2.4)', scrollTrigger: {trigger: s, start: 'top 85%'}}));
+  $$('.frame-in').forEach(f => gsap.from(f, {clipPath: 'inset(100% 0 0 0 round 16px)', duration: 1.3, ease: 'expo.out', scrollTrigger: {trigger: f, start: 'top 85%'}}));
+  $$('.photos img').forEach(im => gsap.fromTo(im, {yPercent: -6, scale: 1.12}, {yPercent: 6, ease: 'none', scrollTrigger: {trigger: im, start: 'top bottom', end: 'bottom top', scrub: true}}));
+
+  // Escaparate horizontal fijado (escritorio)
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 861px)', () => {
+    const tr = $('.track'), dist = () => tr.scrollWidth - innerWidth;
+    const tw = gsap.to(tr, {x: () => -dist(), ease: 'none', scrollTrigger: {trigger: '.shelf', start: 'top top', end: () => '+=' + dist(), pin: '.shelf-pin', scrub: 1, invalidateOnRefresh: true}});
+    gsap.to('.shelf-bar i', {scaleX: 1, ease: 'none', scrollTrigger: {trigger: '.shelf', start: 'top top', end: () => '+=' + dist(), scrub: true}});
+    $$('.dish').forEach(dsh => gsap.from(dsh, {rotate: 4, y: 40, ease: 'none', scrollTrigger: {trigger: dsh, containerAnimation: tw, start: 'left right', end: 'left 60%', scrub: true}}));
+  });
+
+  // Contador de la nota
+  const sc = $('#score'), o = {v: 0};
+  gsap.to(o, {v: 4.4, duration: 1.6, ease: 'power2.out', scrollTrigger: {trigger: sc, start: 'top 85%'}, onUpdate: () => sc.textContent = o.v.toFixed(1).replace('.', ',')});
+  gsap.from('.quote', {y: 120, rotate: (i) => [-14, 10, -8][i], opacity: 0, duration: 1.1, stagger: .12, ease: 'back.out(1.4)', scrollTrigger: {trigger: '.quotes', start: 'top 85%'}});
+
+  // Logo del pie con barrido
+  gsap.from('.ft-word', {clipPath: 'inset(0 0 100% 0)', y: 60, duration: 1.4, ease: 'expo.out', scrollTrigger: {trigger: '.ft', start: 'top 80%'}});
+  gsap.from('.ft-word img', {rotate: -30, scale: .4, duration: 1.2, ease: 'back.out(2)', scrollTrigger: {trigger: '.ft', start: 'top 80%'}});
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+})();
 </script>
 </body>
 </html>
